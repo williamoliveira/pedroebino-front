@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+
+        <div class="block-center m-t-md wd-xl">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">
+                        {{::main.app.name}}
+                </div>
+                <div class="panel-body">
+                    <p class="text-center pv">FAÇA LOGIN PARA CONTINUAR</p>
+                    <form role="form" ng-submit="vm.login(vm.username, vm.password, vm.remember)" name="login.loginForm" novalidate="" class="form-validate mb-lg">
+
+                        <uib-alert ng-show="vm.loginFailed" close="vm.loginFailed = false" type="danger" class="form-group has-feedback">
+                            Credenciais inválidas
+                        </uib-alert>
+
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.loginFailed}">
+                            <input type="email" placeholder="Email" ng-model="vm.username" required="" class="form-control" />
+                            <span class="glyphicon glyphicon-envelope form-control-feedback text-muted"></span>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="{'has-error': vm.loginFailed}">
+                            <input type="password" placeholder="Senha" ng-model="vm.password" required="" class="form-control" />
+                            <span class="glyphicon glyphicon-lock form-control-feedback text-muted"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-block btn-primary mt-lg">Login</button>
+                    </form>
+
+
+                    <div class="clearfix">
+                        <div class="pull-right"><a ui-sref="outside.forgot-password" class="text-muted">Esqueceu sua senha?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-lg text-center">
+                <span>&copy; {{::main.app.year}} - {{::main.app.name}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>

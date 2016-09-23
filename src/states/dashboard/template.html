@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{::main.app.name}}</a>
+
+
+        </div>
+
+        <div class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active">
+                    <a ui-sref="dashboard.entries">Minhas Solicitações</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="dashboard.trucks">Caminhões</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="dashboard.drivers">Motoristas</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" role="button">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Fulano
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <ui-view></ui-view>
+</div>
+
+<div class="m-t-lg p-lg text-center text-muted">
+    <span>&copy; {{::main.app.year}} - {{::main.app.name}}</span>
+</div>

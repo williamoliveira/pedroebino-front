@@ -1,0 +1,47 @@
+<div skl-busy="isLoading">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.dismiss()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <b class="modal-title">Novo caminhão</b>
+    </div>
+    <div class="modal-body">
+
+        <form name="vm.thisForm" novalidate>
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Carga máxima em Litros</label>
+                        <input type="text" class="form-control" placeholder="Ex: 500">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>CNH</label>
+                        <select class="form-control"
+                                ng-model="vm.formTruck.license"
+                                ng-options="license for license in ['B', 'C', 'D', 'E']"></select>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="vm.dismiss()">Cancelar</button>
+        <button type="submit"
+                ng-click="vm.submit(vm.model)"
+                ng-disabled="!vm.thisForm.$valid"
+                class="btn btn-success">Cadastrar
+        </button>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="title-with-button">
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="page-title">Caminhões</h2>
+        </div>
+        <div class="col-md-2 text-right">
+            <a ui-sref="dashboard.trucks.create" class="btn btn-success btn-sm">
+                <i class="glyphicon glyphicon-plus"></i>
+                Novo
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover table-striped">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Volume</th>
+        <th>CNH</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="truck in vm.trucks">
+        <td>{{truck.name}}</td>
+        <td>{{truck.volume}}L</td>
+        <td>{{truck.license}}</td>
+
+        <th>
+            <a ui-sref="dashboard.trucks.show({id: truck.id})" uib-tooltip="Visualizar">
+                <i class="glyphicon glyphicon-eye-open"></i>
+            </a>
+            <a href="#" uib-tooltip="Cancelar" class="">
+                <i class="glyphicon glyphicon-remove text-danger"></i>
+            </a>
+        </th>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+@node_modules_path: '../../node_modules/';
+@bootswatch_theme: 'flatly'; // See availables in https://bootswatch.com/
+
+@import "./bootstrap";
+@import "@{node_modules_path}/bootswatch/@{bootswatch_theme}/variables.less";
+@import "@{node_modules_path}/bootswatch/@{bootswatch_theme}/bootswatch.less";
+@import "util";
+
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.title-with-button{
+  margin-bottom: 20px;
+}
+.page-title{
+  margin: 0;
+}
