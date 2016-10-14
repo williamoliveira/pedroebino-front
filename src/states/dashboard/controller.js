@@ -1,16 +1,16 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'dashboard',
     abstract: true,
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'ctrl'
-};
+}
 
 /** @ngInject */
 function controller() {
-    const ctrl = this;
+    const ctrl = this
 
 
 }

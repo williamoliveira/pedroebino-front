@@ -1,7 +1,7 @@
 <div class="title-with-button">
     <div class="row">
         <div class="col-md-10">
-            <h2 class="page-title">Caminhões</h2>
+            <h2 class="page-title">Motoristas</h2>
         </div>
         <div class="col-md-2 text-right">
             <a ui-sref="dashboard.drivers.create" class="btn btn-success btn-sm">
@@ -24,21 +24,28 @@
     </tr>
     </thead>
     <tbody>
+
     <tr ng-repeat="driver in vm.drivers">
         <td>{{driver.name}}</td>
         <td>{{driver.hourlyWage | currency:'R$'}}</td>
         <td>{{driver.license}}</td>
         <td>{{driver.maxDistance}}km</td>
-        <td>{{driver.city.city}} ({{driver.city.state}})</td>
+        <td>{{driver.city.name}} ({{driver.city.state.initials}})</td>
 
         <th>
             <a ui-sref="dashboard.drivers.show({id: driver.id})" uib-tooltip="Visualizar">
                 <i class="glyphicon glyphicon-eye-open"></i>
             </a>
-            <a href="#" uib-tooltip="Cancelar" class="">
+            <a ng-click="vm.destroy(driver)" uib-tooltip="Excluir" class="">
                 <i class="glyphicon glyphicon-remove text-danger"></i>
             </a>
         </th>
     </tr>
     </tbody>
 </table>
+
+
+
+<div ng-if="vm.drivers.length < 1" class="text-center">
+    Nada encontrado
+</div>

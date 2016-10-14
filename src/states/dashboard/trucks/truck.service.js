@@ -32,14 +32,14 @@ export default function ($q) {
             volume: 1000,
             license: 'D',
         },
-    ];
+    ]
 
     return {
         getAll(){
-            return $q.resolve(trucks);
+            return $q.resolve(trucks)
         },
         getById(id){
-            return $q.resolve(trucks.find((truck) => truck.id == id));
+            return $q.resolve(trucks.find((truck) => truck.id == id))
         }
     }
 }

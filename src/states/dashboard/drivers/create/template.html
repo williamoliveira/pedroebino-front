@@ -1,18 +1,18 @@
 <div skl-busy="isLoading">
     <div class="modal-header">
         <button type="button" class="close" ng-click="vm.dismiss()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times</span>
         </button>
         <b class="modal-title">Novo motorista</b>
     </div>
     <div class="modal-body">
 
 
-        <form name="vm.thisForm" novalidate>
+        <form ng-submit="vm.submit(vm.formModel)" name="vm.form" novalidate>
 
             <div class="form-group">
                 <label>Nome</label>
-                <input type="text" class="form-control" placeholder="">
+                <input type="text" ng-model="vm.formModel.name" class="form-control">
             </div>
 
 
@@ -20,21 +20,21 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Valor hora</label>
-                        <input type="number" class="form-control">
+                        <input type="number" ng-model="vm.formModel.hourlyWage"  class="form-control">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>CNH</label>
                         <select class="form-control"
-                                ng-model="vm.formDriver.license"
-                                ng-options="license for license in ['B', 'C', 'D', 'E']"></select>
+                                ng-model="vm.formModel.license"
+                                ng-options="license as license.name for license in vm.licenses track by license.id"></select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Distância máxima</label>
-                        <input type="number" class="form-control">
+                        <input type="number" ng-model="vm.formModel.maxDistance" class="form-control">
                     </div>
                 </div>
             </div>
@@ -44,16 +44,20 @@
                     <div class="form-group">
                         <label>Estado</label>
                         <select class="form-control"
-                                ng-model="vm.formDriver.city.state"
-                                ng-options="state for state in ['RS', 'SC', 'PR']"></select>
+                                ng-model="vm.formModel.state"
+                                ng-disabled="vm.states.length < 1"
+                                ng-change="vm.loadCities(vm.formModel.state)"
+                                ng-options="state as state.initials for state in vm.states track by state.id"></select>
                     </div>
+
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Cidade</label>
                         <select class="form-control"
-                                ng-model="vm.formDriver.city.city"
-                                ng-options="city for city in ['Ibirama', 'Rio do Sul', 'Blumenau']"></select>
+                                ng-model="vm.formModel.city"
+                                ng-disabled="vm.formModel.state === vm.states[0]"
+                                ng-options="city as city.name for city in vm.cities track by city.id"></select>
                     </div>
                 </div>
             </div>
@@ -63,10 +67,12 @@
     </div>
 
     <div class="modal-footer">
+
         <button class="btn btn-default" ng-click="vm.dismiss()">Cancelar</button>
+
         <button type="submit"
-                ng-click="vm.submit(vm.model)"
-                ng-disabled="!vm.thisForm.$valid"
+                ng-click="vm.submit(vm.formModel)"
+                ng-disabled="!vm.form.$valid"
                 class="btn btn-success">Cadastrar
         </button>
     </div>

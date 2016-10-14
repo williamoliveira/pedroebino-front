@@ -2,7 +2,7 @@
 
     <div class="modal-header">
         <button type="button" class="close" ng-click="vm.dismiss()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times</span>
         </button>
         <b class="modal-title">Motorista</b>
     </div>
@@ -12,10 +12,10 @@
         <div class="row">
             <div class="col-md-9">
                 <b>Nome:</b> {{vm.driver.name}}<br>
-                <b>Valor hora:</b> {{vm.driver.volume}}L<br>
+                <b>Valor hora:</b> {{vm.driver.hourlyWage | currency:'R$'}}<br>
                 <b>CNH Necessária:</b> {{vm.driver.license}}<br>
                 <b>Distância máxima:</b> {{vm.driver.maxDistance}}<br>
-                <b>Cidade:</b> {{vm.driver.city.city}} ({{vm.driver.city.state}})
+                <b>Cidade:</b> {{vm.driver.city.name}} ({{vm.driver.city.state.initials}})
             </div>
         </div>
 

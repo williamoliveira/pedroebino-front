@@ -1,8 +1,8 @@
-import dashboardState from './controller.js';
+import dashboardState from './controller.js'
 
-import entriesModule from './entries/module';
-import trucksModule from './trucks/module';
-import driversModule from './drivers/module';
+import entriesModule from './entries/module'
+import trucksModule from './trucks/module'
+import driversModule from './drivers/module'
 
 export default angular
     .module('app.states.index', [
@@ -10,10 +10,10 @@ export default angular
         trucksModule.name,
         driversModule.name,
     ])
-    .config(config);
+    .config(config)
 
 
 /** @ngInject */
 function config($stateProvider) {
-    $stateProvider.state(dashboardState);
+    $stateProvider.state(dashboardState)
 }

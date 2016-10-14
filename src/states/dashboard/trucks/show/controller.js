@@ -1,31 +1,31 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'dashboard.trucks.show',
     url: '/truck/{id}',
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'vm',
     resolve: {
         /** @ngInject */
         truck: ($stateParams, $state, TruckService) => {
-            console.log($state.$stateParams);
+            console.log($state.$stateParams)
             return TruckService.getById($state.$stateParams.id)
         }
     }
-};
+}
 
 /** @ngInject */
 function controller($uibModalInstance, truck) {
-    const vm = this;
+    const vm = this
 
     // Attributes
-    vm.truck = truck;
+    vm.truck = truck
 
     // Methods assigments
-    vm.success = success;
-    vm.dismiss = dismiss;
-    vm.submit = submit;
+    vm.success = success
+    vm.dismiss = dismiss
+    vm.submit = submit
 
 
     // Method implementations
@@ -35,10 +35,10 @@ function controller($uibModalInstance, truck) {
     }
 
     function success(result) {
-        $uibModalInstance.close(result);
+        $uibModalInstance.close(result)
     }
 
     function dismiss(reason) {
-        $uibModalInstance.dismiss(reason);
+        $uibModalInstance.dismiss(reason)
     }
 }

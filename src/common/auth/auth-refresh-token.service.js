@@ -1,6 +1,6 @@
 module.exports.load = function (mod) {
-    mod.factory("AuthRefreshTokenService", AuthRefreshTokenService);
-};
+    mod.factory("AuthRefreshTokenService", AuthRefreshTokenService)
+}
 
 /** @ngInject */
 function AuthRefreshTokenService($localStorage) {
@@ -10,26 +10,26 @@ function AuthRefreshTokenService($localStorage) {
         setToken: setToken,
         deleteToken: deleteToken,
         hasToken: hasToken
-    };
+    }
 
     function hasToken(){
-        return !!getToken();
+        return !!getToken()
     }
 
     function getToken() {
-        return $localStorage.refreshToken;
+        return $localStorage.refreshToken
     }
 
     function setToken(token) {
         if (token) {
-            $localStorage.refreshToken = token;
+            $localStorage.refreshToken = token
         } else {
-            deleteToken();
+            deleteToken()
         }
     }
 
     function deleteToken(){
-        delete $localStorage.refreshToken;
+        delete $localStorage.refreshToken
     }
 
 }

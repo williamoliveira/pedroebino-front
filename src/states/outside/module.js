@@ -1,8 +1,8 @@
-import outsideState from './controller.js';
+import outsideState from './controller.js'
 
-import the404Module from './404/module';
-import loginModule from './login/module';
-import registerModule from './register/module';
+import the404Module from './404/module'
+import loginModule from './login/module'
+import registerModule from './register/module'
 
 export default angular
     .module('app.states.outside', [
@@ -10,10 +10,10 @@ export default angular
         registerModule.name,
         loginModule.name,
     ])
-    .config(config);
+    .config(config)
 
 
 /** @ngInject */
 function config($stateProvider) {
-    $stateProvider.state(outsideState);
+    $stateProvider.state(outsideState)
 }

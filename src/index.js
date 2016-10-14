@@ -13,9 +13,12 @@ require('ngstorage');
 import "./styles/index.less";
 
 // App dependencies
+import resources from './common/resources/module';
 import authModule from './common/auth/module';
 import modalStateModule from './common/modal-state/module';
 import pageTitleModule from './common/page-title/module';
+import message from './common/message/module';
+
 import statesDashboardModule from './states/dashboard/module';
 import statesOutsideModule from './states/outside/module';
 
@@ -30,11 +33,15 @@ const module = angular.module("pedro&bino", [
     'formly',
     'formlyBootstrap',
     'ngStorage',
+    'ngSanitize',
 
     // App
+    resources.name,
     authModule.name,
     modalStateModule.name,
     pageTitleModule.name,
+    message.name,
+
     statesDashboardModule.name,
     statesOutsideModule.name,
 ]);
@@ -45,9 +52,9 @@ module.value('ENV', {
     "html5RouteBaseHref": "/",
     "loadingBarLatencyThreshold": 200,
     "api": {
-        "baseUrl": "/api",
+        "baseUrl": "http://localhost:8181",
         "auth": {
-            "url": "/oauth2/access_token",
+            "url": "/oauth/token",
             "clientId": "1",
             "clientSecret": "1"
         }

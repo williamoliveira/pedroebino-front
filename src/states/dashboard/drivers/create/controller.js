@@ -1,53 +1,115 @@
-import templateUrl from './template.html';
-
-export default {
-    name: 'dashboard.drivers.create',
-    url: '/new',
-    templateUrl: templateUrl,
-    controller: controller,
-    controllerAs: 'vm'
-};
-
 /** @ngInject */
-function controller($uibModalInstance, $state) {
-    const vm = this;
+export default function DriversCreateCntroller($uibModalInstance,
+                    $state,
+                    $rootScope,
+                    DriversResource,
+                    StatesResource,
+                    CitiesResource) {
+
+    const vm = this
 
     // Attributes
-    vm.options = [
+    vm.licenses = [
         {
-            date: '09/10/2016',
-            price: 868.50
+            id: null,
+            name: "Selecione..."
         },
         {
-            date: '10/10/2016',
-            price: 808.00
+            id: "A",
+            name: "A"
         },
         {
-            date: '11/10/2016',
-            price: 968.50
+            id: "B",
+            name: "B"
         },
-    ];
+        {
+            id: "C",
+            name: "C"
+        },
+        {
+            id: "D",
+            name: "D"
+        },
+        {
+            id: "E",
+            name: "E"
+        },
+    ]
+
+    vm.states = [{
+        id: null,
+        initials: 'Selecione...'
+    }]
+
+    vm.cities = [{
+        id: null,
+        name: 'Selecione...'
+    }]
+
+    vm.formModel = {
+        license: vm.licenses[0],
+        state: vm.states[0],
+        city: vm.cities[0],
+    }
 
     // Methods assigments
-    vm.success = success;
-    vm.dismiss = dismiss;
-    vm.submit = submit;
+    vm.success = success
+    vm.dismiss = dismiss
+    vm.submit = submit
+    vm.loadCities = loadCities
+
+    init()
 
     // Method implementations
 
-    function submit(model) {
-        if (!vm.thisForm.$valid) {
-            return console.error('Existem erros no formulário', 'Erro de validação');
+    function init() {
+        loadStates()
+    }
+
+    function loadStates() {
+        return StatesResource.fetchMany({paginate: false}).then(({items}) => {
+            vm.states = [vm.states[0], ...items]
+        })
+    }
+
+    function loadCities(state) {
+        const query = {
+            "state.id": state.id,
+            paginate: false
         }
 
-        $state.go('dashboard.home.driver', {id: 1});
+        return CitiesResource.fetchMany(query).then(({items}) => {
+            vm.cities = [vm.cities[0], ...items]
+        })
+    }
+
+    function submit(formModel) {
+        if (!vm.form.$valid) {
+            return console.error('Existem erros no formulário', 'Erro de validação')
+        }
+
+        const model = {
+            ...formModel,
+            city: {
+                ...formModel.city,
+                state: formModel.state
+            },
+            license: formModel.license.id,
+            state: undefined
+        }
+
+        DriversResource.create(model).then((res) => {
+            $rootScope.$emit('driver:created', {model})
+            $state.go('dashboard.drivers')
+        })
+
     }
 
     function success(result) {
-        $uibModalInstance.close(result);
+        $uibModalInstance.close(result)
     }
 
     function dismiss(reason) {
-        $uibModalInstance.dismiss(reason);
+        $uibModalInstance.dismiss(reason)
     }
 }

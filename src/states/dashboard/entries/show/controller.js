@@ -1,9 +1,9 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'dashboard.entries.show',
     url: 'entry/{id}',
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'vm',
     resolve: {
@@ -20,14 +20,14 @@ export default {
             }
         }
     }
-};
+}
 
 /** @ngInject */
 function controller($uibModalInstance, entry) {
-    const vm = this;
+    const vm = this
 
     // Attributes
-    vm.entry = entry;
+    vm.entry = entry
 
     vm.options = [
         {
@@ -42,12 +42,12 @@ function controller($uibModalInstance, entry) {
             date: '11/10/2016',
             price: 968.50
         },
-    ];
+    ]
 
     // Methods assigments
-    vm.success = success;
-    vm.dismiss = dismiss;
-    vm.submit = submit;
+    vm.success = success
+    vm.dismiss = dismiss
+    vm.submit = submit
 
 
     // Method implementations
@@ -57,10 +57,10 @@ function controller($uibModalInstance, entry) {
     }
 
     function success(result) {
-        $uibModalInstance.close(result);
+        $uibModalInstance.close(result)
     }
 
     function dismiss(reason) {
-        $uibModalInstance.dismiss(reason);
+        $uibModalInstance.dismiss(reason)
     }
 }

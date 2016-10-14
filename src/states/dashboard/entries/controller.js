@@ -1,16 +1,16 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'dashboard.entries',
     url: '/',
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'vm'
-};
+}
 
 /** @ngInject */
 function controller() {
-    const vm = this;
+    const vm = this
 
     vm.entries = [
         {

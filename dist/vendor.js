@@ -18552,9 +18552,9 @@
 
 	    byType[SCE_CONTEXTS.HTML] = generateHolderType(trustedValueHolderBase);
 	    byType[SCE_CONTEXTS.CSS] = generateHolderType(trustedValueHolderBase);
-	    byType[SCE_CONTEXTS.URL] = generateHolderType(trustedValueHolderBase);
+	    byType[SCE_CONTEXTS.ENDPOINT] = generateHolderType(trustedValueHolderBase);
 	    byType[SCE_CONTEXTS.JS] = generateHolderType(trustedValueHolderBase);
-	    byType[SCE_CONTEXTS.RESOURCE_URL] = generateHolderType(byType[SCE_CONTEXTS.URL]);
+	    byType[SCE_CONTEXTS.RESOURCE_URL] = generateHolderType(byType[SCE_CONTEXTS.ENDPOINT]);
 
 	    /**
 	     * @ngdoc method

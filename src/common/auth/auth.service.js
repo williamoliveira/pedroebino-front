@@ -1,17 +1,17 @@
 module.exports.load = function (mod) {
-    mod.factory('Auth', Auth);
-};
+    mod.factory('Auth', Auth)
+}
 
 /** @ngInject */
 function Auth($http, $q, $rootScope, $log, ENV, AuthBearerTokenService, AuthRefreshTokenService) {
-    "use strict";
+    "use strict"
 
-    var currentUser = null;
+    var currentUser = null
 
     var endpoints = {
         me: ENV.api.baseUrl + "/profile/me",
         accessToken: ENV.api.baseUrl + ENV.api.auth.url
-    };
+    }
 
     return {
         login: login,
@@ -22,60 +22,60 @@ function Auth($http, $q, $rootScope, $log, ENV, AuthBearerTokenService, AuthRefr
         isAuthenticated: isAuthenticated,
         isAuthenticatedAsync: isAuthenticatedAsync,
         refreshToken: refreshToken
-    };
+    }
 
     function isAuthenticated() {
-        return !!currentUser;
+        return !!currentUser
     }
 
     function isAuthenticatedAsync() {
 
         return getCurrentUserAsync()
             .then(function () {
-                return $q.resolve();
+                return $q.resolve()
             })
             .catch(function () {
-                return $q.reject();
-            });
+                return $q.reject()
+            })
 
     }
 
     function getCurrentUser() {
-        return currentUser;
+        return currentUser
     }
 
     function getCurrentUserAsync() {
 
         if (currentUser) {
-            return $q.resolve(currentUser);
+            return $q.resolve(currentUser)
         }
 
-        return getCurrentUserFromServer();
+        return getCurrentUserFromServer()
     }
 
     function getCurrentUserFromServer() {
 
         if (!AuthRefreshTokenService.hasToken()) {
-            return $q.reject("No refresh token");
+            return $q.reject("No refresh token")
         }
 
         if(!AuthBearerTokenService.hasToken()){
-            return refreshToken();
+            return refreshToken()
         }
 
         return $http.get(endpoints.me)
             .then(function (response) {
 
                 if (!response.data) {
-                    return $q.reject(response);
+                    return $q.reject(response)
                 }
 
-                currentUser = response.data;
+                currentUser = response.data
 
-                $rootScope.$emit("userLoaded", currentUser);
+                $rootScope.$emit("userLoaded", currentUser)
 
-                return currentUser;
-            });
+                return currentUser
+            })
 
     }
 
@@ -84,33 +84,34 @@ function Auth($http, $q, $rootScope, $log, ENV, AuthBearerTokenService, AuthRefr
         var grant = {
             grant_type: "password",
             username: username,
-            password: password,
-            client_id: ENV.api.auth.clientId,
-            client_secret: ENV.api.auth.clientSecret
-        };
+            password: password
+        }
 
         var config = {
-            ignoreAuthModule: true
-        };
+            ignoreAuthModule: true,
+            headers: {
+                "Authorization": "Basic " + btoa(ENV.api.auth.clientId + ':' + ENV.api.auth.clientSecret)
+            }
+        }
 
         return $http.post(endpoints.accessToken, grant, config)
             .then(function (response) {
 
-                setTokensFromResponse(response.data);
-                $rootScope.$emit("auth.authenticated");
+                setTokensFromResponse(response.data)
+                $rootScope.$emit("auth.authenticated")
 
-                return getCurrentUserAsync();
+                return getCurrentUserAsync()
             })
             .catch(function (response) {
-                return $q.reject(response.data);
-            });
+                return $q.reject(response.data)
+            })
 
     }
 
     function refreshToken() {
 
         if (!AuthRefreshTokenService.hasToken()) {
-            return $q.reject("No refresh token");
+            return $q.reject("No refresh token")
         }
 
         var grant = {
@@ -118,48 +119,48 @@ function Auth($http, $q, $rootScope, $log, ENV, AuthBearerTokenService, AuthRefr
             refresh_token: AuthRefreshTokenService.getToken(),
             client_id: ENV.api.auth.clientId,
             client_secret: ENV.api.auth.clientSecret
-        };
+        }
 
         var config = {
             ignoreAuthModule: true
-        };
+        }
 
-        $log.debug('Refreshing token');
+        $log.debug('Refreshing token')
 
         return $http.post(endpoints.accessToken, grant, config)
             .then(function (response) {
 
-                setTokensFromResponse(response.data);
-                $rootScope.$emit("auth.authenticated");
+                setTokensFromResponse(response.data)
+                $rootScope.$emit("auth.authenticated")
 
-                return getCurrentUserAsync();
+                return getCurrentUserAsync()
             })
             .catch(function (response) {
-                deleteTokens();
-                return $q.reject(response);
-            });
+                deleteTokens()
+                return $q.reject(response)
+            })
 
     }
 
     function logout() {
-        currentUser = null;
-        deleteTokens();
-        $rootScope.$broadcast("auth.unauthenticated");
+        currentUser = null
+        deleteTokens()
+        $rootScope.$broadcast("auth.unauthenticated")
 
-        return $q.resolve();
+        return $q.resolve()
     }
 
     function deleteTokens() {
-        AuthBearerTokenService.deleteToken();
-        AuthRefreshTokenService.deleteToken();
+        AuthBearerTokenService.deleteToken()
+        AuthRefreshTokenService.deleteToken()
     }
 
     function setTokensFromResponse(response) {
 
-        AuthBearerTokenService.setToken(response.access_token);
-        AuthBearerTokenService.setExpirationTime(response.expires_in);
+        AuthBearerTokenService.setToken(response.access_token)
+        AuthBearerTokenService.setExpirationTime(response.expires_in)
 
-        AuthRefreshTokenService.setToken(response.refresh_token);
+        AuthRefreshTokenService.setToken(response.refresh_token)
     }
 
 }

@@ -1,24 +1,24 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'outside',
     abstract: true,
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'ctrl',
     /** @ngInject */
     onEnter: (ENV) => {
-        ENV.app.bodyClasses.push('bg-grey');
+        ENV.app.bodyClasses.push('bg-grey')
     },
     /** @ngInject */
     onExit:  (ENV) => {
-        ENV.app.bodyClasses.pop();
+        ENV.app.bodyClasses.pop()
     },
-};
+}
 
 /** @ngInject */
 function controller() {
-    const ctrl = this;
+    const ctrl = this
 
 
 }

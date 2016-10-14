@@ -1,9 +1,9 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'outside.register',
     url: '/registro',
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'vm',
 }
@@ -11,7 +11,7 @@ export default {
 /** @ngInject */
 function controller($state) {
 
-    var vm = this;
+    var vm = this
 
 
 }

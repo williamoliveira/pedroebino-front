@@ -1,8 +1,8 @@
-import templateUrl from './template.html';
+import template from './template.html'
 
 export default {
     name: 'outside.404',
-    templateUrl: templateUrl,
+    template: template,
     controller: controller,
     controllerAs: 'vm'
 }

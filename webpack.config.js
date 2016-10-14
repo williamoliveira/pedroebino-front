@@ -17,7 +17,7 @@ var webpackConfig = {
     entry: {
         app: path.join(srcDir, 'index.js')
     },
-    //devtool: 'eval', //sourcemap, eval ...
+    devtool: 'eval', //sourcemap, eval ...
     output: {
         path: outputPath,
         filename: '[name].js'
@@ -31,7 +31,7 @@ var webpackConfig = {
             // Src JS
             {
                 test: /\.js$/,
-                loaders: ['ng-annotate', 'babel?presets[]=es2015&cacheDirectory'],
+                loaders: ['ng-annotate', 'babel?cacheDirectory'],
                 include: [srcDir]
             },
 
@@ -47,16 +47,11 @@ var webpackConfig = {
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
             },
 
-            // HTML Cached (concatenet in js)
-            {
-                test: /template.html$/,
-                loader: 'ngtemplate?relativeTo=' + srcDir + '/!html'
-            },
-
             // HTML
             {
-                test: /template-async.html$/,
-                loader: 'file-loader?name=tpls/[name].[ext]'
+                test: /\.html$/,
+                exclude: /index\.html/,
+                loader: 'html'
             },
 
             // Fonts
@@ -124,7 +119,10 @@ var webpackConfig = {
 };
 
 if (isProd) {
+    webpackConfig.devtool = 'sourcemap';
+
     webpackConfig.debug = false;
+
     webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
         sourceMap: false,
         compress: {
@@ -134,8 +132,8 @@ if (isProd) {
             booleans: true,
             unused: true,
             if_return: true,
-            join_vars: true
-            // drop_console: true
+            join_vars: true,
+            drop_console: true,
         },
         output: {
             comments: false

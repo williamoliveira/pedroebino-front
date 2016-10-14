@@ -1,7 +1,7 @@
 module.exports.load = function (mod) {
-    mod.provider('modalState', modalState);
-    //mod.run(interceptor);
-};
+    mod.provider('modalState', modalState)
+    //mod.run(interceptor)
+}
 
 ///** @ngInject */
 //function interceptor($rootScope, $state){
@@ -9,12 +9,12 @@ module.exports.load = function (mod) {
 //    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
 //
 //        if(toState.data.$previousState){
-//            return;
+//            return
 //        }
 //
-//        toState.data.$previousState = fromState;
-//        toState.data.$previousState.$stateParams = fromParams;
-//    });
+//        toState.data.$previousState = fromState
+//        toState.data.$previousState.$stateParams = fromParams
+//    })
 //}
 
 /**
@@ -25,23 +25,23 @@ module.exports.load = function (mod) {
 /** @ngInject */
 function modalState($stateProvider) {
 
-    var provider = this;
+    var provider = this
 
     this.$get = function () {
-        return provider;
-    };
+        return provider
+    }
 
     this.state = function (stateName, options) {
 
-        var modalResult;
-        var modalInstance;
+        var modalResult
+        var modalInstance
 
         if(angular.isObject(stateName)){
-            options = stateName;
-            stateName = options.name;
+            options = stateName
+            stateName = options.name
         }
 
-        var resolve = options.resolve;
+        var resolve = options.resolve
 
         $stateProvider.state(stateName, {
             url: options.url,
@@ -51,53 +51,53 @@ function modalState($stateProvider) {
             /** @ngInject */
             onExit: function ($state) {
                 if (modalInstance) {
-                    modalInstance.dismiss();
+                    modalInstance.dismiss()
 
-                    modalInstance = modalResult = null;
+                    modalInstance = modalResult = null
                 }
 
-                if($state.$stateParams) delete $state.$stateParams;
+                if($state.$stateParams) delete $state.$stateParams
             }
-        });
+        })
 
         /** @ngInject */
         function openModal($rootScope, $uibModal, $state, $stateParams) {
 
-            $state.$stateParams = $stateParams;
+            $state.$stateParams = $stateParams
 
-            options.resolve = resolve;
+            options.resolve = resolve
 
-            modalInstance = $uibModal.open(options);
+            modalInstance = $uibModal.open(options)
 
             modalInstance.result
                 .then(function (result) {
-                    modalResult = result;
-                    $rootScope.$broadcast('statefulModalResult', result);
+                    modalResult = result
+                    $rootScope.$broadcast('statefulModalResult', result)
                 })
                 .catch(function (reason) {
-                    $rootScope.$broadcast('statefulModalDismissed', reason);
+                    $rootScope.$broadcast('statefulModalDismissed', reason)
                 })
                 .finally(function () { // modal closes
 
                     if ($state.$current.name === stateName) {
                         //
-                        //var previousState = $state.current.data.$previousState;
+                        //var previousState = $state.current.data.$previousState
                         //
                         //if (previousState.name) {
-                        //    $state.go(previousState.name, previousState.$stateParams);
-                        //    delete $state.current.data.$previousState;
+                        //    $state.go(previousState.name, previousState.$stateParams)
+                        //    delete $state.current.data.$previousState
                         //}
                         //else {
-                            $state.go('^'); // go to parent state
+                            $state.go('^') // go to parent state
                         //}
 
                     }
 
-                    modalInstance = modalResult = null;
-                });
+                    modalInstance = modalResult = null
+                })
         }
 
-        return provider;
-    };
+        return provider
+    }
 }
 
