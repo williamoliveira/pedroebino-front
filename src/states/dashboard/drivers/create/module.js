@@ -9,7 +9,7 @@ export default angular.module('app.states.dashboard.drivers.create', [])
 function config(modalStateProvider) {
     modalStateProvider.state({
         name: 'dashboard.drivers.create',
-        url: '/new',
+        url: '/novo',
         template: template,
         controller: DriversCreateController,
         controllerAs: 'vm'

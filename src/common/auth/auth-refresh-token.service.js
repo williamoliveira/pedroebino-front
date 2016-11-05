@@ -1,5 +1,5 @@
 module.exports.load = function (mod) {
-    mod.factory("AuthRefreshTokenService", AuthRefreshTokenService)
+    mod.factory('AuthRefreshTokenService', AuthRefreshTokenService)
 }
 
 /** @ngInject */

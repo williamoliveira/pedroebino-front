@@ -1,10 +1,10 @@
 module.exports.load = function (mod) {
-  mod.factory("AuthBearerTokenService", AuthBearerTokenService)
+  mod.factory('AuthBearerTokenService', AuthBearerTokenService)
 }
 
 /** @ngInject */
 function AuthBearerTokenService() {
-    "use strict"
+    'use strict'
 
     var token = null
     var expirationTime = null

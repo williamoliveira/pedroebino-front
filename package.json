@@ -7,7 +7,6 @@
     "build:production": "webpack --config webpack.config.js --progress --colors --prod; notify-send -t 100 \"Build Completed\""
   },
   "dependencies": {
-    "bootswatch": "^3.3.7",
     "angular": "^1.5",
     "angular-base64-upload": "^0.1.19",
     "angular-formly": "^8.2.1",
@@ -16,6 +15,7 @@
     "angular-http-auth": "^1.3.0",
     "angular-loading-bar": "^0.9.0",
     "angular-messages": "^1.5.6",
+    "angular-permission": "^4.1.1",
     "angular-route": "^1.5.8",
     "angular-sanitize": "^1.5.6",
     "angular-ui-bootstrap": "^1.3.3",
@@ -23,12 +23,13 @@
     "angular-ui-router": "^0.3.1",
     "api-check": "^7.5.5",
     "bootstrap": "^3.3",
+    "bootswatch": "^3.3.7",
     "jquery": "^3.0.0",
     "less": "^2.7.1",
+    "lodash": "^4.16.6",
     "moment": "^2.13.0",
     "ngstorage": "^0.3.10",
-    "restangular": "^1.5.2",
-    "sound-notification-webpack-plugin": "^1.0.0"
+    "restangular": "^1.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",
@@ -40,9 +41,6 @@
     "exports-loader": "~0",
     "extract-text-webpack-plugin": "~1",
     "file-loader": "~0",
-    "gulp": "~3",
-    "gulp-htmlmin": "^2.0.0",
-    "gulp-shell": "^0.5.2",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.22.0",
     "imports-loader": "^0.6.5",
@@ -52,7 +50,6 @@
     "ng-cache-loader": "~0",
     "ngtemplate-loader": "~1",
     "raw-loader": "^0.5.1",
-    "rimraf": "^2.5.2",
     "sound-notification-webpack-plugin": "^1.0.0",
     "style-loader": "~0",
     "url-loader": "~0",

@@ -7,26 +7,27 @@
     </div>
     <div class="modal-body">
 
-        <form name="vm.thisForm" novalidate>
+        <form name="vm.form" novalidate>
 
             <div class="form-group">
                 <label>Nome</label>
-                <input type="text" class="form-control" placeholder="">
+                <input type="text" ng-model="vm.formModel.name" class="form-control" placeholder="">
             </div>
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Carga máxima em Litros</label>
-                        <input type="text" class="form-control" placeholder="Ex: 500">
+                        <input type="text" ng-model="vm.formModel.volume" class="form-control" placeholder="Ex: 500">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>CNH</label>
                         <select class="form-control"
-                                ng-model="vm.formTruck.license"
-                                ng-options="license for license in ['B', 'C', 'D', 'E']"></select>
+                                ng-model="vm.formModel.license"
+                                ng-options="license as license.name for license in vm.licenses track by license.id"></select>
+
                     </div>
                 </div>
             </div>
@@ -39,8 +40,8 @@
     <div class="modal-footer">
         <button class="btn btn-default" ng-click="vm.dismiss()">Cancelar</button>
         <button type="submit"
-                ng-click="vm.submit(vm.model)"
-                ng-disabled="!vm.thisForm.$valid"
+                ng-click="vm.submit(vm.formModel)"
+                ng-disabled="!vm.form.$valid"
                 class="btn btn-success">Cadastrar
         </button>
     </div>

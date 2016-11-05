@@ -46,7 +46,7 @@
                         <select class="form-control"
                                 ng-model="vm.formModel.state"
                                 ng-disabled="vm.states.length < 1"
-                                ng-change="vm.loadCities(vm.formModel.state)"
+                                ng-change="vm.loadFromCities(vm.formModel.state)"
                                 ng-options="state as state.initials for state in vm.states track by state.id"></select>
                     </div>
 

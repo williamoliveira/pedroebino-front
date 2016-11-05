@@ -1,53 +1,79 @@
-import template from './template.html'
-
-export default {
-    name: 'dashboard.trucks.create',
-    url: '/new',
-    template: template,
-    controller: controller,
-    controllerAs: 'vm'
-}
 
 /** @ngInject */
-function controller($uibModalInstance, $state) {
-    const vm = this
-
-    // Attributes
-    vm.options = [
-        {
-            date: '09/10/2016',
-            price: 868.50
-        },
-        {
-            date: '10/10/2016',
-            price: 808.00
-        },
-        {
-            date: '11/10/2016',
-            price: 968.50
-        },
-    ]
-
-    // Methods assigments
-    vm.success = success
-    vm.dismiss = dismiss
-    vm.submit = submit
-
-    // Method implementations
-
-    function submit(model) {
-        if (!vm.thisForm.$valid) {
-            return console.error('Existem erros no formulário', 'Erro de validação')
-        }
-
-        $state.go('dashboard.home.truck', {id: 1})
+export default function ($uibModalInstance,
+                         $state,
+                         $rootScope,
+                         TrucksResource) {
+  
+  const vm = this
+  
+  // Attributes
+  vm.licenses = [
+    {
+      id: null,
+      name: 'Selecione...'
+    },
+    {
+      id: 'A',
+      name: 'A'
+    },
+    {
+      id: 'B',
+      name: 'B'
+    },
+    {
+      id: 'C',
+      name: 'C'
+    },
+    {
+      id: 'D',
+      name: 'D'
+    },
+    {
+      id: 'E',
+      name: 'E'
+    },
+  ]
+  
+  vm.formModel = {
+    license: vm.licenses[0],
+  }
+  
+  // Methods assigments
+  vm.success = success
+  vm.dismiss = dismiss
+  vm.submit = submit
+  
+  init()
+  
+  // Method implementations
+  
+  function init() {
+    
+  }
+  
+  function submit(formModel) {
+    if (!vm.form.$valid) {
+      return console.error('Existem erros no formulário', 'Erro de validação')
     }
-
-    function success(result) {
-        $uibModalInstance.close(result)
+    
+    const model = {
+      ...formModel,
+      license: formModel.license.id,
     }
-
-    function dismiss(reason) {
-        $uibModalInstance.dismiss(reason)
-    }
+    
+    TrucksResource.create(model).then((res) => {
+      $rootScope.$emit('truck:created', {model})
+      $state.go('dashboard.trucks')
+    })
+    
+  }
+  
+  function success(result) {
+    $uibModalInstance.close(result)
+  }
+  
+  function dismiss(reason) {
+    $uibModalInstance.dismiss(reason)
+  }
 }

@@ -1,17 +1,17 @@
-
-import DriversIndexController from './controller.js'
+import TrucksIndexController from './controller.js'
 import template from './template.html'
 
-export default angular.module('app.states.dashboard.drivers.index', [])
+export default angular.module('app.states.dashboard.trucks.index', [])
   .config(config)
 
 /** @ngInject */
 function config($stateProvider) {
+  
   $stateProvider.state({
-    name: 'dashboard.drivers',
-    url: '/motoristas',
+    name: 'dashboard.trucks',
+    url: '/caminhoes',
     template: template,
-    controller: DriversIndexController,
+    controller: TrucksIndexController,
     controllerAs: 'vm',
     data: {
       permissions: {

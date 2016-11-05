@@ -1,26 +1,26 @@
 
-export default class DriversIndexController {
+export default class {
   
   /** @ngInject */
-  constructor($rootScope, $scope, MessageService, DriversResource){
+  constructor($rootScope, $scope, MessageService, RequestsResource){
     this.$rootScope = $rootScope
     this.$scope = $scope
     this.MessageService = MessageService
-    this.DriversResource = DriversResource
+    this.RequestsResource = RequestsResource
     
     this.registerListeners()
-    this.fetchDrivers()
+    this.fetchRequests()
   }
   
   registerListeners() {
-    const unsub = this.$rootScope.$on('driver:created', () => this.fetchDrivers())
+    const unsub = this.$rootScope.$on('request:created', () => this.fetchRequests())
     this.$scope.$on('$destroy', unsub)
   }
   
-  fetchDrivers() {
-    return this.DriversResource
+  fetchRequests() {
+    return this.RequestsResource
       .fetchMany({paginate: false})
-      .then(({ items }) => this.drivers = items)
+      .then(({ items }) => this.requests = items)
   }
   
   destroy(model){
@@ -30,11 +30,11 @@ export default class DriversIndexController {
   }
   
   doDestroy(model){
-    this.DriversResource
+    this.RequestsResource
       .deleteById(model.id)
       .then((res) => {
         console.log('deletado')
-        this.fetchDrivers()
+        this.fetchRequests()
       })
   }
 }

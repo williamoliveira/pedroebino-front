@@ -11,10 +11,10 @@ export default {
 /** @ngInject */
 function controller(Auth, $state) {
 
-    var vm = this
+    const vm = this
 
     // Attributes
-    vm.username = 'admin1@app.com'
+    vm.username = 'admin@admin.com'
     vm.password = '12345678'
     vm.remember = true
     vm.loginFailed = false
@@ -27,7 +27,7 @@ function controller(Auth, $state) {
         Auth.login(username, password)
             .then(function () {
                 vm.loginFailed = false
-                $state.go('outside.place-selector')
+                $state.go('dashboard.home')
             })
             .catch(function () {
                 vm.loginFailed = true

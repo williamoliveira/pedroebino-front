@@ -1,16 +1,13 @@
-import template from './template.html'
-
-export default {
-    name: 'dashboard',
-    abstract: true,
-    template: template,
-    controller: controller,
-    controllerAs: 'ctrl'
-}
 
 /** @ngInject */
-function controller() {
-    const ctrl = this
-
-
+export default function (Auth) {
+  const dashboardCtrl = this
+  
+  init()
+  
+  function init() {
+    Auth.getCurrentUserAsync().then((user) =>{
+      dashboardCtrl.user = user
+    })
+  }
 }

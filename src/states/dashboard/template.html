@@ -16,12 +16,12 @@
 
             <ul class="nav navbar-nav">
                 <li ui-sref-active="active">
-                    <a ui-sref="dashboard.entries">Minhas Solicitações</a>
+                    <a ui-sref="dashboard.requests">Minhas Solicitações</a>
                 </li>
-                <li ui-sref-active="active">
+                <li ui-sref-active="active" permission permission-only="'ADMIN'">
                     <a ui-sref="dashboard.trucks">Caminhões</a>
                 </li>
-                <li ui-sref-active="active">
+                <li ui-sref-active="active" permission permission-only="'ADMIN'">
                     <a ui-sref="dashboard.drivers">Motoristas</a>
                 </li>
             </ul>
@@ -30,15 +30,13 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" role="button">
                         <i class="glyphicon glyphicon-user"></i>
-                        Fulano
+                        {{dashboardCtrl.user.person.name}}
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Configurações</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">Logout</a></li>
                     </ul>
                 </li>
             </ul>

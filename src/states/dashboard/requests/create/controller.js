@@ -3,39 +3,11 @@
 export default function ($uibModalInstance,
                          $state,
                          $rootScope,
-                         DriversResource,
+                         RequestsResource,
                          StatesResource,
                          CitiesResource) {
   
   const vm = this
-  
-  // Attributes
-  vm.licenses = [
-    {
-      id: null,
-      name: 'Selecione...'
-    },
-    {
-      id: 'A',
-      name: 'A'
-    },
-    {
-      id: 'B',
-      name: 'B'
-    },
-    {
-      id: 'C',
-      name: 'C'
-    },
-    {
-      id: 'D',
-      name: 'D'
-    },
-    {
-      id: 'E',
-      name: 'E'
-    },
-  ]
   
   vm.states = [{
     id: null,
@@ -47,17 +19,29 @@ export default function ($uibModalInstance,
     name: 'Selecione...'
   }]
   
+  vm.toCities = [{
+    id: null,
+    name: 'Selecione...'
+  }]
+  
+  
   vm.formModel = {
-    license: vm.licenses[0],
-    state: vm.states[0],
-    city: vm.fromCities[0],
+    to: {
+      state: vm.states[0],
+      city: vm.toCities[0],
+    },
+    from: {
+      state: vm.states[0],
+      city: vm.fromCities[0],
+    },
   }
   
   // Methods assigments
   vm.success = success
   vm.dismiss = dismiss
   vm.submit = submit
-  vm.loadFromCities = loadCities
+  vm.loadFromCities = loadFromCities
+  vm.loadToCities = loadToCities
   
   init()
   
@@ -73,7 +57,7 @@ export default function ($uibModalInstance,
     })
   }
   
-  function loadCities(state) {
+  function loadFromCities(state) {
     const query = {
       'state.id': state.id,
       paginate: false
@@ -84,6 +68,17 @@ export default function ($uibModalInstance,
     })
   }
   
+  function loadToCities(state) {
+    const query = {
+      'state.id': state.id,
+      paginate: false
+    }
+    
+    return CitiesResource.fetchMany(query).then(({items}) => {
+      vm.toCities = [vm.toCities[0], ...items]
+    })
+  }
+  
   function submit(formModel) {
     if (!vm.form.$valid) {
       return console.error('Existem erros no formulário', 'Erro de validação')
@@ -91,17 +86,25 @@ export default function ($uibModalInstance,
     
     const model = {
       ...formModel,
-      city: {
-        ...formModel.city,
-        state: formModel.state
+      to: {
+        city: {
+          ...formModel.to.city,
+          state: formModel.to.state
+        },
+        state: undefined,
       },
-      license: formModel.license.id,
-      state: undefined
+      from: {
+        city: {
+          ...formModel.from.city,
+          state: formModel.from.state
+        },
+        state: undefined
+      }
     }
     
-    DriversResource.create(model).then((res) => {
-      $rootScope.$emit('driver:created', {model})
-      $state.go('dashboard.drivers')
+    RequestsResource.create(model).then((res) => {
+      $rootScope.$emit('request:created', {model})
+      $state.go('dashboard.requests')
     })
     
   }

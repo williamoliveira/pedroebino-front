@@ -1,22 +1,6 @@
-import template from './template.html'
-
-export default {
-    name: 'dashboard.trucks.show',
-    url: '/truck/{id}',
-    template: template,
-    controller: controller,
-    controllerAs: 'vm',
-    resolve: {
-        /** @ngInject */
-        truck: ($stateParams, $state, TruckService) => {
-            console.log($state.$stateParams)
-            return TruckService.getById($state.$stateParams.id)
-        }
-    }
-}
 
 /** @ngInject */
-function controller($uibModalInstance, truck) {
+export default function TruckShowController($uibModalInstance, truck) {
     const vm = this
 
     // Attributes
@@ -25,15 +9,8 @@ function controller($uibModalInstance, truck) {
     // Methods assigments
     vm.success = success
     vm.dismiss = dismiss
-    vm.submit = submit
-
 
     // Method implementations
-
-    function submit(model) {
-
-    }
-
     function success(result) {
         $uibModalInstance.close(result)
     }

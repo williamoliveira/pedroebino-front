@@ -4,7 +4,7 @@
             <h2 class="page-title">Minhas solicitações</h2>
         </div>
         <div class="col-md-2 text-right">
-            <a ui-sref="dashboard.entries.create" class="btn btn-success btn-sm">
+            <a ui-sref="dashboard.requests.create" class="btn btn-success btn-sm">
                 <i class="glyphicon glyphicon-plus"></i>
                 Novo
             </a>
@@ -24,7 +24,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="entry in vm.entries">
+    <tr ng-repeat="entry in vm.requests">
         <td>
             <span class="label" ng-class="{
             'label-info': (entry.status === 'Aberto'),
@@ -39,7 +39,7 @@
         <td>{{entry.shareTruck ? 'Sim' : 'Não'}}</td>
 
         <th>
-            <a ui-sref="dashboard.entries.show({id: entry.id})" uib-tooltip="Visualizar">
+            <a ui-sref="dashboard.requests.show({id: entry.id})" uib-tooltip="Visualizar">
                 <i class="glyphicon glyphicon-eye-open"></i>
             </a>
             <a href="#" uib-tooltip="Cancelar" class="">

@@ -10,7 +10,7 @@ function config(modalStateProvider) {
 
     modalStateProvider.state({
         name: 'dashboard.drivers.show',
-        url: '/driver/{id}',
+        url: '/motorista/{id}',
         template,
         controller: DriverShowController,
         controllerAs: 'vm',

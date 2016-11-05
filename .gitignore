@@ -2,3 +2,4 @@ node_modules
 bower_componets
 .idea
 npm-debug.log
+/nbproject/private/

@@ -1,19 +1,10 @@
-import indexState from './controller.js'
-import truckService from './truck.service.js'
-
-import createTruckModule from './create/module'
-import showTruckModule from './show/module'
+import indexDriverModule from './index/module'
+import createDriverModule from './create/module'
+import showDriverModule from './show/module'
 
 export default angular
-    .module('app.states.dashboard.trucks', [
-        createTruckModule.name,
-        showTruckModule.name,
-    ])
-    .config(config)
-    .factory('TruckService', truckService)
-
-
-/** @ngInject */
-function config($stateProvider) {
-    $stateProvider.state(indexState)
-}
+  .module('app.states.dashboard.trucks', [
+    indexDriverModule.name,
+    createDriverModule.name,
+    showDriverModule.name,
+  ])
