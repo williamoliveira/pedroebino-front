@@ -1,9 +1,9 @@
 /** @ngInject */
-export default function ($uibModalInstance, driver) {
+export default function ($uibModalInstance, request) {
   const vm = this
   
   // Attributes
-  vm.driver = driver
+  vm.request = request
   
   // Methods assigments
   vm.success = success

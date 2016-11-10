@@ -14,7 +14,7 @@ function controller(Auth, $state) {
     const vm = this
 
     // Attributes
-    vm.username = 'admin@admin.com'
+    vm.username = 'johndoe@gmail.com'
     vm.password = '12345678'
     vm.remember = true
     vm.loginFailed = false

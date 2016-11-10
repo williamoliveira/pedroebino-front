@@ -62,20 +62,20 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Carga em Litros</label>
-                        <input type="text" class="form-control" placeholder="Ex: 500">
+                        <input type="text" ng-model="vm.formModel.volume" class="form-control" placeholder="Ex: 500">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Data</label>
-                        <input type="date" class="form-control" placeholder="__/__/____">
+                        <label>Data preferida</label>
+                        <input type="date" ng-model="vm.formModel.preferedDate" class="form-control" placeholder="__/__/____">
                     </div>
                 </div>
             </div>
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox"> Aceito compartilhar caminhão
+                    <input type="checkbox" ng-model="vm.formModel.canShare"> Aceito compartilhar caminhão
                 </label>
             </div>
 
@@ -87,7 +87,7 @@
     <div class="modal-footer">
         <button class="btn btn-default" ng-click="vm.dismiss()">Cancelar</button>
         <button type="submit"
-                ng-click="vm.submit(vm.model)"
+                ng-click="vm.submit(vm.formModel)"
                 ng-disabled="!vm.form.$valid"
                 class="btn btn-success">Prosseguir &raquo
         </button>

@@ -1,13 +1,17 @@
 /** @ngInject */
-export default ($rootScope, $log, PermRoleStore) => {
+export default ($rootScope, $q, $log, PermRoleStore, Auth) => {
   
   PermRoleStore.defineManyRoles({
     /** @ngInject */
     'AUTHENTICATED': (Auth) => Auth.isAuthenticatedAsync(),
-    /** @ngInject */
-    'USER': (Auth) => Auth.getCurrentUserAsync().then((user) => user.roles.includes('USER')),
-    /** @ngInject */
-    'ADMIN': (Auth) => Auth.getCurrentUserAsync().then((user) => user.roles.includes('ADMIN')),
+    'USER': () => hasRole('USER'),
+    'ADMIN': () => hasRole('ADMIN'),
   });
+  
+  function hasRole(role) {
+      return Auth.getCurrentUserAsync().then((user) =>
+        (user.roles.includes(role) ? $q.resolve : $q.reject)()
+      )
+  }
   
 }

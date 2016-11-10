@@ -87,24 +87,18 @@ export default function ($uibModalInstance,
     const model = {
       ...formModel,
       to: {
-        city: {
-          ...formModel.to.city,
-          state: formModel.to.state
-        },
-        state: undefined,
+        ...formModel.to.city,
+        state: formModel.to.state
       },
       from: {
-        city: {
-          ...formModel.from.city,
-          state: formModel.from.state
-        },
-        state: undefined
+        ...formModel.from.city,
+        state: formModel.from.state
       }
     }
     
     RequestsResource.create(model).then((res) => {
       $rootScope.$emit('request:created', {model})
-      $state.go('dashboard.requests')
+      $state.go('dashboard.requests.show')
     })
     
   }

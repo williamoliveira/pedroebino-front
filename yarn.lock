@@ -62,6 +62,12 @@ angular-messages@^1.5.6:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.5.8.tgz#1f91d1e7f3f4f2e5ab5adefee2c9a7196b1a34cf"
 
+angular-moment:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/angular-moment/-/angular-moment-1.0.0.tgz#6f549023f0bf213d17261f66159fd1d12540eaba"
+  dependencies:
+    moment ">=2.8.0 <3.0.0"
+
 angular-permission:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/angular-permission/-/angular-permission-4.1.1.tgz#b94c350f554db0b9b6b6b75885dd4ad99c604422"
@@ -1526,6 +1532,10 @@ https-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.0.tgz#b3ffdfe734b2a3d4a9efd58e8654c91fce86eafd"
 
+humanize-duration:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/humanize-duration/-/humanize-duration-3.9.1.tgz#fc715e2ac638542b204c77d77d8dba05d46ef527"
+
 icss-replace-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/icss-replace-symbols/-/icss-replace-symbols-1.0.2.tgz#cb0b6054eb3af6edc9ab1d62d01933e2d4c8bfa5"
@@ -1943,9 +1953,9 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, "mkdirp@>=0.5 0", mkdirp@~0.5.0, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.13.0:
-  version "2.15.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.15.2.tgz#1bfdedf6a6e345f322fe956d5df5bd08a8ce84dc"
+moment, "moment@>=2.8.0 <3.0.0":
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.16.0.tgz#f38f2c97c9889b0ee18fc6cc392e1e443ad2da8e"
 
 ms@0.7.1:
   version "0.7.1"

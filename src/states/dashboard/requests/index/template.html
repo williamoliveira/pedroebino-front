@@ -18,31 +18,35 @@
         <th>Status</th>
         <th>Origem</th>
         <th>Destino</th>
+        <th>Data preferida</th>
+        <th>Tempo estimado</th>
         <th>Carga</th>
         <th>Compartilhar</th>
         <th>Ações</th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="entry in vm.requests">
+    <tr ng-repeat="request in vm.requests">
         <td>
             <span class="label" ng-class="{
-            'label-info': (entry.status === 'Aberto'),
-            'label-success': (entry.status === 'Concluído'),
-            'label-danger': (entry.status === 'Cancelado'),
-            'label-primary': (entry.status === 'Definido'),
-            }">{{entry.status}}</span>
+            'label-info': (request.status === 'pending'),
+            'label-success': (request.status === 'Concluído'),
+            'label-danger': (request.status === 'Cancelado'),
+            'label-primary': (request.status === 'Definido'),
+            }">{{vm.presentStatus(request.status)}}</span>
         </td>
-        <td>{{entry.from}}</td>
-        <td>{{entry.to}}</td>
-        <td>{{entry.volume}}L</td>
-        <td>{{entry.shareTruck ? 'Sim' : 'Não'}}</td>
+        <td>{{vm.presentCity(request.from)}}</td>
+        <td>{{vm.presentCity(request.to)}}</td>
+        <td>{{request.preferedDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{request.estimatedTravelDuration*1000 | humanizeDuration}}</td>
+        <td>{{request.volume}}L</td>
+        <td>{{request.canShare ? 'Sim' : 'Não'}}</td>
 
         <th>
-            <a ui-sref="dashboard.requests.show({id: entry.id})" uib-tooltip="Visualizar">
+            <a ui-sref="dashboard.requests.show({id: request.id})" uib-tooltip="Visualizar">
                 <i class="glyphicon glyphicon-eye-open"></i>
             </a>
-            <a href="#" uib-tooltip="Cancelar" class="">
+            <a href="#" ng-click="vm.destroy(request)" uib-tooltip="Cancelar" class="">
                 <i class="glyphicon glyphicon-remove text-danger"></i>
             </a>
         </th>

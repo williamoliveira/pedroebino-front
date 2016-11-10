@@ -37,4 +37,17 @@ export default class {
         this.fetchRequests()
       })
   }
+  
+  presentStatus(status){
+    const map = {
+      pending: "Aberto",
+    }
+    
+    return map.hasOwnProperty(status) ? map[status] : status
+  }
+  
+  presentCity(city){
+    return `${city.name} (${city.state.initials})`
+  }
+  
 }

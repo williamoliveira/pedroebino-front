@@ -4,6 +4,7 @@ import 'angular-ui-router'
 import 'angular-ui-bootstrap'
 import 'angular-http-auth'
 import 'angular-permission'
+import 'angular-moment'
 import 'angular-formly'
 import 'angular-formly-templates-bootstrap'
 import 'angular-sanitize'
@@ -21,6 +22,7 @@ import resources from './common/resources/module'
 import authModule from './common/auth/module'
 import modalStateModule from './common/modal-state/module'
 import pageTitleModule from './common/page-title/module'
+import humanizeDurationModule from './common/humanize-duration/module'
 import message from './common/message/module'
 
 import statesDashboardModule from './states/dashboard/module'
@@ -40,6 +42,7 @@ const module = angular.module('pedro&bino', [
   'ngSanitize',
   'permission',
   'permission.ui',
+  'angularMoment',
   
   // App
   resources.name,
@@ -47,6 +50,7 @@ const module = angular.module('pedro&bino', [
   modalStateModule.name,
   pageTitleModule.name,
   message.name,
+  humanizeDurationModule.name,
   
   statesDashboardModule.name,
   statesOutsideModule.name,

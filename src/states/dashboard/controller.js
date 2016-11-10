@@ -1,6 +1,6 @@
 
 /** @ngInject */
-export default function (Auth) {
+export default function (Auth, $state) {
   const dashboardCtrl = this
   
   init()
@@ -9,5 +9,11 @@ export default function (Auth) {
     Auth.getCurrentUserAsync().then((user) =>{
       dashboardCtrl.user = user
     })
+  }
+  
+  dashboardCtrl.logout = () => {
+    Auth.logout();
+    dashboardCtrl.user = null;
+    $state.go('outside.login');
   }
 }
