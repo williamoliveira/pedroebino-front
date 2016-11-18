@@ -42,7 +42,7 @@ angular-formly-templates-bootstrap@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/angular-formly-templates-bootstrap/-/angular-formly-templates-bootstrap-6.4.0.tgz#d3aa4ad41bc531ff5a4a57aee7fd403112494682"
 
-angular-formly@^8.2.1:
+angular-formly@^8.4.0:
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/angular-formly/-/angular-formly-8.4.0.tgz#d859c3cd8096bb79b6175730f3cba8b9a46e4a37"
 
@@ -50,15 +50,15 @@ angular-growl-v2@^0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/angular-growl-v2/-/angular-growl-v2-0.7.5.tgz#57876d511622801948c02e3a95dd96337af6470d"
 
-angular-http-auth@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/angular-http-auth/-/angular-http-auth-1.3.0.tgz#18a5fa0de47bca939f6977f69b9ae67d42fd77c6"
+angular-http-auth@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/angular-http-auth/-/angular-http-auth-1.4.1.tgz#f8255af463591b6bde60d71411045a20b512861f"
 
 angular-loading-bar@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/angular-loading-bar/-/angular-loading-bar-0.9.0.tgz#37ef52c25f102c216e7b3cdfd2fc5a5df9628e45"
 
-angular-messages@^1.5.6:
+angular-messages@^1.5.8:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.5.8.tgz#1f91d1e7f3f4f2e5ab5adefee2c9a7196b1a34cf"
 
@@ -78,19 +78,19 @@ angular-route@^1.5.8:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.5.8.tgz#964093de7ec8dc5799bd56a93a6ce5f60095674b"
 
-angular-sanitize@^1.5.6:
+angular-sanitize@^1.5.8:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.5.8.tgz#1832f69487ee820a21cbe30055a8fb1bdf297ab8"
 
-angular-ui-bootstrap@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-1.3.3.tgz#4820f895d433c17abeb4ac7387f2f122cbf8c11c"
+angular-ui-bootstrap@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-2.2.0.tgz#90ed79a6208fe6072331635cca124b2ca7b0c7e0"
 
-angular-ui-mask@^1.8.5:
+angular-ui-mask@^1.8.7:
   version "1.8.7"
   resolved "https://registry.yarnpkg.com/angular-ui-mask/-/angular-ui-mask-1.8.7.tgz#2935ae82345aded60e7b8c997f3902dfb8ed465b"
 
-angular-ui-router@^0.3.1:
+angular-ui-router@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/angular-ui-router/-/angular-ui-router-0.3.2.tgz#c27e0496309c99218d5655985b164a096ab520a9"
   dependencies:
@@ -227,7 +227,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.16.0:
     esutils "^2.0.2"
     js-tokens "^2.0.0"
 
-babel-core@^6.18.0, babel-core@^6.9.1:
+babel-core@^6.18.0, babel-core@^6.18.2:
   version "6.18.2"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.18.2.tgz#d8bb14dd6986fa4f3566a26ceda3964fa0e04e5b"
   dependencies:
@@ -338,7 +338,7 @@ babel-helpers@^6.16.0:
     babel-runtime "^6.0.0"
     babel-template "^6.16.0"
 
-babel-loader@^6.2.4:
+babel-loader@^6.2.7:
   version "6.2.7"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.2.7.tgz#16fdbf64328030dc5a606827d389c8b92a2a8032"
   dependencies:
@@ -532,9 +532,9 @@ babel-plugin-transform-es2015-unicode-regex@^6.3.13:
     babel-runtime "^6.0.0"
     regexpu-core "^2.0.0"
 
-babel-plugin-transform-object-rest-spread@^6.16.0:
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.16.0.tgz#db441d56fffc1999052fdebe2e2f25ebd28e36a9"
+babel-plugin-transform-object-rest-spread@^6.19.0:
+  version "6.19.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.19.0.tgz#f6ac428ee3cb4c6aa00943ed1422ce813603b34c"
   dependencies:
     babel-plugin-syntax-object-rest-spread "^6.8.0"
     babel-runtime "^6.0.0"
@@ -697,9 +697,9 @@ bootswatch@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootswatch/-/bootswatch-3.3.7.tgz#eb6f9a9a8523b87a706ea91deec3e0d7eaa8ab1f"
 
-bower@^1.7.9:
-  version "1.7.9"
-  resolved "https://registry.yarnpkg.com/bower/-/bower-1.7.9.tgz#b7296c2393e0d75edaa6ca39648132dd255812b0"
+bower@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/bower/-/bower-1.8.0.tgz#55dbebef0ad9155382d9e9d3e497c1372345b44a"
 
 brace-expansion@^1.0.0:
   version "1.1.6"
@@ -1471,7 +1471,7 @@ html-comment-regex@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/html-comment-regex/-/html-comment-regex-1.1.1.tgz#668b93776eaae55ebde8f3ad464b307a4963625e"
 
-html-loader@^0.4.3:
+html-loader@^0.4.4:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/html-loader/-/html-loader-0.4.4.tgz#f2b5b9acd5e035ff3ab5fd369c13c97a7bb014da"
   dependencies:
@@ -1493,7 +1493,7 @@ html-minifier@^3.0.1, html-minifier@^3.0.2, html-minifier@^3.1.0:
     relateurl "0.2.x"
     uglify-js "2.7.x"
 
-html-webpack-plugin@^2.22.0:
+html-webpack-plugin@^2.24.1:
   version "2.24.1"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.24.1.tgz#7f45fc678f66eac2d433f22336b4399da023b57e"
   dependencies:
@@ -1719,7 +1719,7 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery@^3.0.0:
+jquery@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
 
@@ -2006,7 +2006,7 @@ ng-cache-loader@~0:
     html-minifier "^3.0.2"
     loader-utils "^0.2.4"
 
-ngstorage@^0.3.10:
+ngstorage@^0.3.11:
   version "0.3.11"
   resolved "https://registry.yarnpkg.com/ngstorage/-/ngstorage-0.3.11.tgz#1637c45b872d909d9cc7e18b374898d50b2e844f"
 

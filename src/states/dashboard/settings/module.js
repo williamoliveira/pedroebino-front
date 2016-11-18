@@ -1,16 +1,17 @@
-import DriversIndexController from "./controller.js";
+import SettingsController from "./controller.js";
 import template from "./template.html";
 
-export default angular.module('app.states.dashboard.drivers.index', [])
+export default angular.module('app.states.dashboard.settings.create', [])
   .config(config)
+
 
 /** @ngInject */
 function config($stateProvider) {
   $stateProvider.state({
-    name: 'dashboard.drivers',
-    url: '/motoristas',
-    template: template,
-    controller: DriversIndexController,
+    name: 'dashboard.settings',
+    url: '/configuracoes',
+    template,
+    controller: SettingsController,
     controllerAs: 'vm',
     data: {
       permissions: {

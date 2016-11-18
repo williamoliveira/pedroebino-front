@@ -1,7 +1,7 @@
 <div class="title-with-button">
     <div class="row">
         <div class="col-md-10">
-            <h2 class="page-title">Minhas solicitações</h2>
+            <h2 class="page-title">Solicitações</h2>
         </div>
         <div class="col-md-2 text-right">
             <a ui-sref="dashboard.requests.create" class="btn btn-success btn-sm">
@@ -12,44 +12,35 @@
     </div>
 </div>
 
-<table class="table table-hover table-striped">
-    <thead>
-    <tr>
-        <th>Status</th>
-        <th>Origem</th>
-        <th>Destino</th>
-        <th>Data preferida</th>
-        <th>Tempo estimado</th>
-        <th>Carga</th>
-        <th>Compartilhar</th>
-        <th>Ações</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="request in vm.requests">
-        <td>
-            <span class="label" ng-class="{
-            'label-info': (request.status === 'pending'),
-            'label-success': (request.status === 'Concluído'),
-            'label-danger': (request.status === 'Cancelado'),
-            'label-primary': (request.status === 'Definido'),
-            }">{{vm.presentStatus(request.status)}}</span>
-        </td>
-        <td>{{vm.presentCity(request.from)}}</td>
-        <td>{{vm.presentCity(request.to)}}</td>
-        <td>{{request.preferedDate | date:'dd/MM/yyyy'}}</td>
-        <td>{{request.estimatedTravelDuration*1000 | humanizeDuration}}</td>
-        <td>{{request.volume}}L</td>
-        <td>{{request.canShare ? 'Sim' : 'Não'}}</td>
+<div class="row">
+    <div ng-repeat="request in vm.requests"
+         ui-sref="dashboard.requests.show({id: request.id})"
+         class="col-md-3">
 
-        <th>
-            <a ui-sref="dashboard.requests.show({id: request.id})" uib-tooltip="Visualizar">
-                <i class="glyphicon glyphicon-eye-open"></i>
-            </a>
-            <a href="#" ng-click="vm.destroy(request)" uib-tooltip="Cancelar" class="">
-                <i class="glyphicon glyphicon-remove text-danger"></i>
-            </a>
-        </th>
-    </tr>
-    </tbody>
-</table>
+        <div class="panel request-panel">
+            <div class="request-panel-map"
+                 ng-style="{'background-image': 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 1) 100%), url(' + vm.staticMapUrl(request) + ')'}">
+                <span class="label" ng-class="{
+                                'label-info': (request.status === 'PENDING'),
+                                'label-primary': (request.status === 'DEFINED'),
+                                'label-success': (request.status === 'COMPLETED'),
+                                'label-danger': (request.status === 'CANCELED'),
+                                }">
+                    {{vm.presentStatus(request.status)}}
+                </span>
+            </div>
+
+            <div class="request-panel-inner">
+                <strong>De:</strong> {{vm.presentCity(request.from)}}<br>
+                <strong>Para:</strong> {{vm.presentCity(request.to)}}<br>
+                <strong>Data:</strong> {{request.preferredDate | date:'dd/MM/yyyy'}}<br>
+                <strong>Tempo:</strong> {{request.estimatedTravelDuration*1000 | humanizeDuration}}<br>
+                <strong>Volume:</strong> {{request.volume}}L <br>
+                <strong>Compartilhar carga?:</strong> {{request.canShare ? 'Sim' : 'Não'}}<br>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

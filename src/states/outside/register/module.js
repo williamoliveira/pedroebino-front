@@ -1,9 +1,9 @@
-import state from './controller'
+import state from "./controller";
 
 export default angular.module('app.states.outside.register', [])
-    .config(config)
+  .config(config)
 
 /** @ngInject */
-function config ($stateProvider) {
-    $stateProvider.state(state)
+function config($stateProvider) {
+  $stateProvider.state(state)
 }

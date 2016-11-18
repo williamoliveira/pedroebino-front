@@ -1,0 +1,28 @@
+<div class="title-with-button">
+    <h2 class="page-title">Configurações</h2>
+</div>
+
+<form ng-submit="vm.submit(vm.formModel)" name="vm.form" novalidate>
+
+    <div class="col-md-3">
+        <div class="row">
+            <div class="form-group">
+                <label>Margem de Lucro</label>
+
+                <div class="input-group">
+                    <input type="number" ng-model="vm.formModel.profitMargin" class="form-control">
+                    <div class="input-group-addon">%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div class="clearfix"></div>
+
+<button type="submit"
+        ng-click="vm.submit(vm.formModel)"
+        ng-disabled="!vm.form.$valid"
+        class="btn btn-success">Salvar
+</button>

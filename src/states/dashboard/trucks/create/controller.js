@@ -1,12 +1,11 @@
-
 /** @ngInject */
 export default function ($uibModalInstance,
                          $state,
                          $rootScope,
-                         TrucksResource) {
-  
+                         trucksResource) {
+
   const vm = this
-  
+
   // Attributes
   vm.licenses = [
     {
@@ -34,45 +33,45 @@ export default function ($uibModalInstance,
       name: 'E'
     },
   ]
-  
+
   vm.formModel = {
     license: vm.licenses[0],
   }
-  
+
   // Methods assigments
   vm.success = success
   vm.dismiss = dismiss
   vm.submit = submit
-  
+
   init()
-  
+
   // Method implementations
-  
+
   function init() {
-    
+
   }
-  
+
   function submit(formModel) {
     if (!vm.form.$valid) {
       return console.error('Existem erros no formulário', 'Erro de validação')
     }
-    
+
     const model = {
       ...formModel,
       license: formModel.license.id,
     }
-    
-    TrucksResource.create(model).then((res) => {
+
+    trucksResource.create(model).then((res) => {
       $rootScope.$emit('truck:created', {model})
       $state.go('dashboard.trucks')
     })
-    
+
   }
-  
+
   function success(result) {
     $uibModalInstance.close(result)
   }
-  
+
   function dismiss(reason) {
     $uibModalInstance.dismiss(reason)
   }

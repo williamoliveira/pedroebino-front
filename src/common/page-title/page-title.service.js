@@ -1,15 +1,15 @@
-module.exports.load = function(mod){
-    mod.factory('PageTitleService', PageTitleService)
+module.exports.load = function (mod) {
+  mod.factory('PageTitleService', PageTitleService)
 }
 
 /** @ngInject */
-function PageTitleService($rootScope){
+function PageTitleService($rootScope) {
 
-    return {
-        setTitle: setTitle
-    }
+  return {
+    setTitle: setTitle
+  }
 
-    function setTitle(newTitle){
-        $rootScope.pageTitle = newTitle
-    }
+  function setTitle(newTitle) {
+    $rootScope.pageTitle = newTitle
+  }
 }

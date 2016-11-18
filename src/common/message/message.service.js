@@ -1,78 +1,78 @@
 var modalTemplate = require('./message-modal.html')
 
 module.exports.load = function (mod) {
-    mod.factory('MessageService', MessageFactory)
+  mod.factory('MessageService', MessageFactory)
 }
 
 /** @ngInject */
-function MessageFactory($uibModal){
+function MessageFactory($uibModal) {
 
-    return {
-        confirm,
-        error,
-        openModal
+  return {
+    confirm,
+    error,
+    openModal
+  }
+
+  function confirm(message, title) {
+    return openModal(title, message)
+  }
+
+  function error(message, title) {
+
+    title = title || 'Erro'
+
+    var options = {
+      buttons: [
+        {
+          label: 'Ok',
+          className: 'btn-success'
+        }
+      ]
     }
 
-    function confirm(message, title){
-        return openModal(title, message)
+    return openModal(title, message, options)
+  }
+
+  function openModal(title, message, options) {
+
+    if (!options) {
+      options = {
+        buttons: [
+          {
+            label: 'Cancelar',
+            className: 'btn-default',
+            click: 'dismiss'
+          },
+          {
+            label: 'Confirmar',
+            className: 'btn-success'
+          }
+        ]
+      }
     }
 
-    function error(message, title){
+    const modalInstance = $uibModal.open({
+      template: modalTemplate,
+      size: options.size || 'sm',
+      /** @ngInject */
+      controller: function ($scope, $uibModalInstance) {
 
-        title = title || 'Erro'
+        $scope.title = title ? title : 'Confirmação'
+        $scope.message = message
+        $scope.options = options
 
-        var options = {
-            buttons: [
-                {
-                    label: 'Ok',
-                    className: 'btn-success'
-                }
-            ]
+        $scope.dismiss = function () {
+          $uibModalInstance.dismiss()
         }
 
-        return openModal(title, message, options)
-    }
-
-    function openModal(title, message, options){
-
-        if(!options){
-            options = {
-                buttons: [
-                    {
-                        label: 'Cancelar',
-                        className: 'btn-default',
-                        click: 'dismiss'
-                    },
-                    {
-                        label: 'Confirmar',
-                        className: 'btn-success'
-                    }
-                ]
-            }
+        $scope.confirm = function () {
+          $uibModalInstance.close(true)
         }
+      }
+    })
 
-        const modalInstance = $uibModal.open({
-            template: modalTemplate,
-            size: options.size || 'sm',
-            /** @ngInject */
-            controller: function ($scope, $uibModalInstance) {
-
-                $scope.title = title ? title : 'Confirmação'
-                $scope.message = message
-                $scope.options = options
-
-                $scope.dismiss = function () {
-                    $uibModalInstance.dismiss()
-                }
-
-                $scope.confirm = function () {
-                    $uibModalInstance.close(true)
-                }
-            }
-        })
-
-        return modalInstance.result
-    }
+    return modalInstance.result
+  }
 
 
 }

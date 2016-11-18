@@ -10,7 +10,6 @@
             </a>
         </div>
     </div>
-
 </div>
 
 <table class="table table-hover table-striped">
@@ -29,7 +28,7 @@
         <td>{{driver.name}}</td>
         <td>{{driver.hourlyWage | currency:'R$'}}</td>
         <td>{{driver.license}}</td>
-        <td>{{driver.maxDistance}}km</td>
+        <td>{{driver.maxDistance}} Km</td>
         <td>{{driver.city.name}} ({{driver.city.state.initials}})</td>
 
         <th>
@@ -43,7 +42,6 @@
     </tr>
     </tbody>
 </table>
-
 
 
 <div ng-if="vm.drivers.length < 1" class="text-center">

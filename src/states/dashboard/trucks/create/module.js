@@ -1,6 +1,5 @@
-
-import TrucksCreateController from './controller.js'
-import template from './template.html'
+import TrucksCreateController from "./controller.js";
+import template from "./template.html";
 
 export default angular.module('app.states.dashboard.trucks.create', [])
   .config(config)

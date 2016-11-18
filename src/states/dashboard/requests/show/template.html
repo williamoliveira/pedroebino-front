@@ -10,16 +10,24 @@
     <div class="modal-body">
 
         <div class="row">
-            <div class="col-md-9">
-                <b>Status:</b> {{vm.entry.status}}<br>
-                <b>Origem:</b> {{vm.entry.from}}<br>
-                <b>Destino:</b> {{vm.entry.to}}<br>
-                <b>Carga:</b> {{vm.entry.volume}}L<br>
-                <b>Data:</b> {{vm.entry.date}}<br>
-                <b>Aceita compartilhar caminhão:</b> {{vm.entry.shareTruck ? 'Sim' : 'Não'}}
+            <div class="col-md-3">
+                <a href="{{vm.googleMapsUrl(vm.request)}}" target="_blank" >
+                    <img ng-src="{{vm.staticMapUrl(vm.request, '400x600', false)}}" class="border-radius-sm img-responsive">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <b>Status:</b> {{vm.presentStatus(vm.request.status)}}<br>
+                <b>Origem:</b> {{vm.presentCity(vm.request.from)}}<br>
+                <b>Destino:</b> {{vm.presentCity(vm.request.to)}}<br>
+                <b>Carga:</b> {{vm.request.volume}}L<br>
+                <b>Data preferida:</b> {{vm.request.preferredDate | date:'dd/MM/yyyy HH:mm'}}<br>
+                <b>Tempo estimado de viagem:</b> {{vm.request.estimatedTravelDuration*1000 | humanizeDuration}}<br>
+                <b>Aceita compartilhar caminhão:</b> {{vm.request.canShare ? 'Sim' : 'Não'}}
             </div>
             <div class="col-md-3">
-                <button class="btn btn-danger btn-sm  pull-right">
+                <button ng-if="['PENDING', 'DEFINED'].includes(vm.request.status)"
+                        ng-click="vm.cancelRequest(vm.request)"
+                        class="btn btn-danger btn-sm pull-right">
                     Cancelar
                 </button>
             </div>
@@ -27,22 +35,44 @@
 
         <hr>
 
-        <h4>Opções</h4>
-        <div class="row">
-            <div ng-repeat="option in vm.options" class="col-md-4">
-                <div class="panel panel-default" ng-class="{'panel-primary': option.date === vm.entry.date}">
-                    <div class="panel-heading text-center">
-                        {{option.date}}
-                    </div>
-                    <div class="panel-body text-center">
-                        <p>
-                            R$ {{option.price}}
-                        </p>
+        <div ng-if="!vm.request.chosenProposal">
+            <h4>Propostas</h4>
+            <div class="row">
 
-                        <button class="btn btn-primary btn-sm btn-block">Selecionar</button>
+                <div ng-if="vm.request.proposals.length < 1">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning m-b-none">
+                            Nenhuma proposta pode ser feita para a data escolhida.
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-repeat="proposal in vm.request.proposals" class="col-md-4">
+                    <div class="panel panel-default" ng-class="{'panel-primary': proposal.date === vm.request.date}">
+                        <div class="panel-heading text-center">
+                            {{proposal.leavesAt | date:'dd/MM/yyyy'}}
+                        </div>
+                        <div class="panel-body text-center">
+                            <h4 class="text-success m-t-none">
+                                {{proposal.value | currency:'R$ '}}
+                            </h4>
+
+                            <button ng-click="vm.selectProposal(vm.request, proposal)"
+                                    class="btn btn-primary btn-sm btn-block">
+                                Selecionar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div ng-if="vm.request.chosenProposal">
+            <h4>Proposta escolhida</h4>
+
+            Data de saída: {{vm.request.chosenProposal.leavesAt | date:"dd/MM/yyyy 'ás' HH:mm"}} <br>
+            Data estimada de chegada: {{vm.request.chosenProposal.arrivesAt | date:"dd/MM/yyyy 'ás' HH:mm"}}<br>
+            Valor: {{vm.request.chosenProposal.value | currency:"R$ "}}
         </div>
 
         <div class="clearfix"></div>

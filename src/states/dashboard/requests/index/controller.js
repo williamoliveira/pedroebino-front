@@ -1,53 +1,51 @@
+import * as presenters from "../presenters";
 
 export default class {
-  
+
   /** @ngInject */
-  constructor($rootScope, $scope, MessageService, RequestsResource){
+  constructor($rootScope, $scope, MessageService, requestsResource) {
     this.$rootScope = $rootScope
     this.$scope = $scope
     this.MessageService = MessageService
-    this.RequestsResource = RequestsResource
-    
+    this.requestsResource = requestsResource
+
+    this.presentCity = presenters.presentCity
+    this.presentStatus = presenters.presentStatus
+    this.staticMapUrl = presenters.staticMapUrl
+
     this.registerListeners()
     this.fetchRequests()
   }
-  
+
   registerListeners() {
-    const unsub = this.$rootScope.$on('request:created', () => this.fetchRequests())
-    this.$scope.$on('$destroy', unsub)
+    const unsubs = [
+      this.$rootScope.$on('request:created', () => this.fetchRequests()),
+      this.$rootScope.$on('request:updated', () => this.fetchRequests())
+    ]
+
+    this.$scope.$on('$destroy', () => unsubs.forEach((unsub) => unsub()))
   }
-  
+
   fetchRequests() {
-    return this.RequestsResource
-      .fetchMany({paginate: false})
-      .then(({ items }) => this.requests = items)
+    return this.requestsResource
+      .fetchMany({paginate: false, sort: "id"})
+      .then(({items}) => this.requests = items)
   }
-  
-  destroy(model){
+
+  destroy(model) {
     this.MessageService
       .confirm('Tem certeza que deseja excluir isto?')
       .then(() => this.doDestroy(model))
   }
-  
-  doDestroy(model){
-    this.RequestsResource
+
+  doDestroy(model) {
+    this.requestsResource
       .deleteById(model.id)
       .then((res) => {
         console.log('deletado')
         this.fetchRequests()
       })
   }
-  
-  presentStatus(status){
-    const map = {
-      pending: "Aberto",
-    }
-    
-    return map.hasOwnProperty(status) ? map[status] : status
-  }
-  
-  presentCity(city){
-    return `${city.name} (${city.state.initials})`
-  }
-  
+
+
 }

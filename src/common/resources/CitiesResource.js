@@ -1,10 +1,10 @@
-import BaseResource from './BaseResource'
+import BaseResource from "./BaseResource";
 
 export default class CitiesResource extends BaseResource {
 
-    constructor($http, ENV) {
-        super($http)
+  constructor($http, ENV) {
+    super($http)
 
-        this.endpoint = `${ENV.api.baseUrl}/cities`
-    }
+    this.endpoint = `${ENV.api.baseUrl}/cities`
+  }
 }

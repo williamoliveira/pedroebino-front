@@ -1,21 +1,22 @@
-import controller from './controller.js'
-import template from './template.html'
-
-import requestsModule from './requests/module'
-import trucksModule from './trucks/module'
-import driversModule from './drivers/module'
+import controller from "./controller.js";
+import template from "./template.html";
+import requestsModule from "./requests/module";
+import trucksModule from "./trucks/module";
+import driversModule from "./drivers/module";
+import settingsModule from "./settings/module";
 
 export default angular
   .module('app.states.index', [
     requestsModule.name,
-    driversModule.name,
+    settingsModule.name,
     trucksModule.name,
+    driversModule.name,
   ])
   .config(config)
 
 /** @ngInject */
 function config($stateProvider) {
-  
+
   $stateProvider.state({
     name: 'dashboard',
     abstract: true,
@@ -25,11 +26,17 @@ function config($stateProvider) {
     data: {
       permissions: {
         only: ['AUTHENTICATED'],
-        redirectTo: 'outside.login'
+        /** @ngInject */
+        redirectTo: ($location) => {
+          return {
+            state: 'outside.login',
+            params: {redirect: $location.path()}
+          }
+        }
       }
     }
   })
-  
+
   $stateProvider.state({
     name: 'dashboard.home',
     url: '/',
@@ -38,5 +45,5 @@ function config($stateProvider) {
       $timeout(() => $state.go('dashboard.requests'))
     }
   })
-  
+
 }

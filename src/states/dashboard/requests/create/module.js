@@ -1,5 +1,5 @@
-import RequestsCreateController from './controller.js'
-import template from './template.html'
+import RequestsCreateController from "./controller.js";
+import template from "./template.html";
 
 export default angular.module('app.states.dashboard.requests.create', [])
   .config(config)

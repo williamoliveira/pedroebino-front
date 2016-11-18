@@ -1,17 +1,17 @@
-import DriversCreateController from './controller.js'
-import template from './template.html'
+import DriversCreateController from "./controller.js";
+import template from "./template.html";
 
 export default angular.module('app.states.dashboard.drivers.create', [])
-    .config(config)
+  .config(config)
 
 
 /** @ngInject */
 function config(modalStateProvider) {
-    modalStateProvider.state({
-        name: 'dashboard.drivers.create',
-        url: '/novo',
-        template: template,
-        controller: DriversCreateController,
-        controllerAs: 'vm'
-    })
+  modalStateProvider.state({
+    name: 'dashboard.drivers.create',
+    url: '/novo',
+    template: template,
+    controller: DriversCreateController,
+    controllerAs: 'vm'
+  })
 }

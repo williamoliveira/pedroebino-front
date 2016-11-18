@@ -1,5 +1,5 @@
-import RequestShowController from './controller.js'
-import template from './template.html'
+import RequestShowController from "./controller.js";
+import template from "./template.html";
 
 export default angular.module('app.states.dashboard.requests.show', [])
   .config(config)
@@ -7,19 +7,19 @@ export default angular.module('app.states.dashboard.requests.show', [])
 
 /** @ngInject */
 function config(modalStateProvider) {
-  
+
   modalStateProvider.state({
     name: 'dashboard.requests.show',
-    url: '/requisicao/{id}',
+    url: '/{id}',
     template,
     controller: RequestShowController,
     controllerAs: 'vm',
     resolve: {
       /** @ngInject */
-      request: ($stateParams, $state, RequestsResource) => {
-        return RequestsResource.fetchById($state.$stateParams.id)
+      request: ($stateParams, $state, requestsResource) => {
+        return requestsResource.fetchById($state.$stateParams.id)
       }
     }
   })
-  
+
 }

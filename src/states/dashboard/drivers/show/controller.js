@@ -1,22 +1,22 @@
 /** @ngInject */
 export default function DriverShowController($uibModalInstance, driver) {
-    const vm = this
+  const vm = this
 
-    // Attributes
-    vm.driver = driver
+  // Attributes
+  vm.driver = driver
 
-    // Methods assigments
-    vm.success = success
-    vm.dismiss = dismiss
+  // Methods assigments
+  vm.success = success
+  vm.dismiss = dismiss
 
 
-    // Method implementations
+  // Method implementations
 
-    function success(result) {
-        $uibModalInstance.close(result)
-    }
+  function success(result) {
+    $uibModalInstance.close(result)
+  }
 
-    function dismiss(reason) {
-        $uibModalInstance.dismiss(reason)
-    }
+  function dismiss(reason) {
+    $uibModalInstance.dismiss(reason)
+  }
 }

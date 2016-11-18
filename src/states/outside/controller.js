@@ -1,6 +1,5 @@
-
 /** @ngInject */
 export default function () {
-    const vm = this
+  const vm = this
 
 }

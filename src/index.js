@@ -1,36 +1,35 @@
 //Global dependencies
-import 'angular'
-import 'angular-ui-router'
-import 'angular-ui-bootstrap'
-import 'angular-http-auth'
-import 'angular-permission'
-import 'angular-moment'
-import 'angular-formly'
-import 'angular-formly-templates-bootstrap'
-import 'angular-sanitize'
-import 'angular-growl-v2'
-import 'ngstorage'
+import "angular";
+import "angular-ui-router";
+import "angular-ui-bootstrap";
+import "angular-http-auth";
+import "angular-permission";
+import "angular-moment";
+import "angular-formly";
+import "angular-formly-templates-bootstrap";
+import "angular-sanitize";
+import "angular-growl-v2";
+import "ngstorage";
+import "./styles/index.less";
+import run from "./run";
+import config from "./config";
+import angularLocale from "./common/angular-locales/pt-br.module";
+import resources from "./common/resources/module";
+import authModule from "./common/auth/module";
+import modalStateModule from "./common/modal-state/module";
+import pageTitleModule from "./common/page-title/module";
+import humanizeDurationModule from "./common/humanize-duration/module";
+import message from "./common/message/module";
+import statesDashboardModule from "./states/dashboard/module";
+import statesOutsideModule from "./states/outside/module";
 
 // Styles
-import './styles/index.less'
 
 // App dependencies
-import run from './run'
-import config from './config'
-
-import resources from './common/resources/module'
-import authModule from './common/auth/module'
-import modalStateModule from './common/modal-state/module'
-import pageTitleModule from './common/page-title/module'
-import humanizeDurationModule from './common/humanize-duration/module'
-import message from './common/message/module'
-
-import statesDashboardModule from './states/dashboard/module'
-import statesOutsideModule from './states/outside/module'
 
 // Main module declaration
 const module = angular.module('pedro&bino', [
-  
+
   // Vendors
   'ui.router', // (angular-ui-router)
   'ui.bootstrap', // (angular-ui-bootstrap)
@@ -43,15 +42,16 @@ const module = angular.module('pedro&bino', [
   'permission',
   'permission.ui',
   'angularMoment',
-  
+
   // App
+  angularLocale.name,
   resources.name,
   authModule.name,
   modalStateModule.name,
   pageTitleModule.name,
   message.name,
   humanizeDurationModule.name,
-  
+
   statesDashboardModule.name,
   statesOutsideModule.name,
 ])
@@ -81,13 +81,15 @@ module.run(run)
 
 // <html> level controller
 /** @ngInject */
-module.controller('MainController', function (ENV) {
+module.controller('MainController', function ($rootScope, ENV) {
   const main = this
-  
+
   main.app = ENV.app
+  main.app.bodyClasses = []
+  $rootScope.main = main
 })
 
 // Bootstrap the main module
-angular.element(document).ready(function() {
+angular.element(document).ready(function () {
   angular.bootstrap(document.getElementsByTagName('html'), ['pedro&bino'])
 })

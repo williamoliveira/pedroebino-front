@@ -1,25 +1,25 @@
-import DriverShowController from './controller.js'
-import template from './template.html'
+import DriverShowController from "./controller.js";
+import template from "./template.html";
 
 export default angular.module('app.states.dashboard.drivers.show', [])
-    .config(config)
+  .config(config)
 
 
 /** @ngInject */
 function config(modalStateProvider) {
 
-    modalStateProvider.state({
-        name: 'dashboard.drivers.show',
-        url: '/motorista/{id}',
-        template,
-        controller: DriverShowController,
-        controllerAs: 'vm',
-        resolve: {
-            /** @ngInject */
-            driver: ($stateParams, $state, DriversResource) => {
-                return DriversResource.fetchById($state.$stateParams.id)
-            }
-        }
-    })
+  modalStateProvider.state({
+    name: 'dashboard.drivers.show',
+    url: '/motorista/{id}',
+    template,
+    controller: DriverShowController,
+    controllerAs: 'vm',
+    resolve: {
+      /** @ngInject */
+      driver: ($stateParams, $state, driversResource) => {
+        return driversResource.fetchById($state.$stateParams.id)
+      }
+    }
+  })
 
 }
