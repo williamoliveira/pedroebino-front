@@ -3,8 +3,8 @@ export default function ($uibModalInstance,
                          $state,
                          $rootScope,
                          driversResource,
-                         StatesResource,
-                         CitiesResource) {
+                         statesResource,
+                         citiesResource) {
 
   const vm = this
 
@@ -13,10 +13,6 @@ export default function ($uibModalInstance,
     {
       id: null,
       name: 'Selecione...'
-    },
-    {
-      id: 'A',
-      name: 'A'
     },
     {
       id: 'B',
@@ -41,7 +37,7 @@ export default function ($uibModalInstance,
     initials: 'Selecione...'
   }]
 
-  vm.fromCities = [{
+  vm.cities = [{
     id: null,
     name: 'Selecione...'
   }]
@@ -49,7 +45,7 @@ export default function ($uibModalInstance,
   vm.formModel = {
     license: vm.licenses[0],
     state: vm.states[0],
-    city: vm.fromCities[0],
+    city: vm.cities[0],
   }
 
   // Methods assigments
@@ -67,7 +63,7 @@ export default function ($uibModalInstance,
   }
 
   function loadStates() {
-    return StatesResource.fetchMany({paginate: false}).then(({items}) => {
+    return statesResource.fetchMany({paginate: false}).then(({items}) => {
       vm.states = [vm.states[0], ...items]
     })
   }
@@ -78,8 +74,8 @@ export default function ($uibModalInstance,
       paginate: false
     }
 
-    return CitiesResource.fetchMany(query).then(({items}) => {
-      vm.fromCities = [vm.fromCities[0], ...items]
+    return citiesResource.fetchMany(query).then(({items}) => {
+      vm.cities = [vm.cities[0], ...items]
     })
   }
 

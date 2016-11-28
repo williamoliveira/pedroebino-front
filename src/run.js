@@ -6,6 +6,7 @@ export default ($rootScope, $q, $log, PermRoleStore, Auth) => {
     'AUTHENTICATED': (Auth) => Auth.isAuthenticatedAsync(),
     'USER': () => hasRole('USER'),
     'ADMIN': () => hasRole('ADMIN'),
+    'CLIENT': () => hasRole('CLIENT'),
   });
 
   function hasRole(role) {

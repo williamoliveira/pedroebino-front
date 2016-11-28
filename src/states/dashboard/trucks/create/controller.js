@@ -13,10 +13,6 @@ export default function ($uibModalInstance,
       name: 'Selecione...'
     },
     {
-      id: 'A',
-      name: 'A'
-    },
-    {
       id: 'B',
       name: 'B'
     },

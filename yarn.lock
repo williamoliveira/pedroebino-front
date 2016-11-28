@@ -34,6 +34,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-animate:
+  version "1.5.8"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.5.8.tgz#535f7369225aba7fb15bf7134c71b15bc635c586"
+
 angular-base64-upload@^0.1.19:
   version v0.1.19
   resolved "https://registry.yarnpkg.com/angular-base64-upload/-/angular-base64-upload-0.1.19.tgz#e24d51bbef82f413c1e196af0f745d9e88ccb841"
@@ -50,17 +54,17 @@ angular-growl-v2@^0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/angular-growl-v2/-/angular-growl-v2-0.7.5.tgz#57876d511622801948c02e3a95dd96337af6470d"
 
-angular-http-auth@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/angular-http-auth/-/angular-http-auth-1.4.1.tgz#f8255af463591b6bde60d71411045a20b512861f"
+angular-http-auth@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/angular-http-auth/-/angular-http-auth-1.5.0.tgz#a84aaa2f94fda1c5b641efc4c9a7958d57f61ef0"
 
-angular-loading-bar@^0.9.0:
+angular-loading-bar:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/angular-loading-bar/-/angular-loading-bar-0.9.0.tgz#37ef52c25f102c216e7b3cdfd2fc5a5df9628e45"
 
-angular-messages@^1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.5.8.tgz#1f91d1e7f3f4f2e5ab5adefee2c9a7196b1a34cf"
+angular-messages@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.5.9.tgz#c92064dfb57e32c0ab0c382e85666778ab6fdaa0"
 
 angular-moment:
   version "1.0.0"
@@ -74,15 +78,22 @@ angular-permission:
   dependencies:
     angular ">=1.4.8"
 
-angular-route@^1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.5.8.tgz#964093de7ec8dc5799bd56a93a6ce5f60095674b"
+angular-route@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.5.9.tgz#4f0582eb0fb4435443a05a7d8c5eb9bdc2c5c41c"
 
-angular-sanitize@^1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.5.8.tgz#1832f69487ee820a21cbe30055a8fb1bdf297ab8"
+angular-sanitize@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.5.9.tgz#e2d7dd8e8587f1342b6d2efdfa67311fcf1f65ed"
 
-angular-ui-bootstrap@^2.2.0:
+angular-ui-bootstrap-datetimepicker:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/angular-ui-bootstrap-datetimepicker/-/angular-ui-bootstrap-datetimepicker-2.0.1.tgz#b7013db707a7451a843a5e4e8ccc453bf1f07a10"
+  dependencies:
+    angular ">=1.4.4"
+    angular-ui-bootstrap ">=1.2.4"
+
+angular-ui-bootstrap@^2.2.0, angular-ui-bootstrap@>=1.2.4:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-2.2.0.tgz#90ed79a6208fe6072331635cca124b2ca7b0c7e0"
 
@@ -99,6 +110,10 @@ angular-ui-router@^0.3.2:
 angular@^1.0.8, angular@^1.5, angular@>=1.4.8:
   version "1.5.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.8.tgz#925a5392b8c212d09572dc446db7e01264e094cb"
+
+angular@>=1.4.4:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.9.tgz#b7aeff42dad87881e06be16b6690fe766d868b51"
 
 ansi-regex@^2.0.0:
   version "2.0.0"
@@ -338,9 +353,9 @@ babel-helpers@^6.16.0:
     babel-runtime "^6.0.0"
     babel-template "^6.16.0"
 
-babel-loader@^6.2.7:
-  version "6.2.7"
-  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.2.7.tgz#16fdbf64328030dc5a606827d389c8b92a2a8032"
+babel-loader@^6.2.8:
+  version "6.2.8"
+  resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-6.2.8.tgz#30d7183aef60afc140b36443676b7acb4c12ac9c"
   dependencies:
     find-cache-dir "^0.1.1"
     loader-utils "^0.2.11"
@@ -696,10 +711,6 @@ bootstrap@^3.3:
 bootswatch@^3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootswatch/-/bootswatch-3.3.7.tgz#eb6f9a9a8523b87a706ea91deec3e0d7eaa8ab1f"
-
-bower@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/bower/-/bower-1.8.0.tgz#55dbebef0ad9155382d9e9d3e497c1372345b44a"
 
 brace-expansion@^1.0.0:
   version "1.1.6"
@@ -1815,7 +1826,7 @@ loader-utils@^0.2.11, loader-utils@^0.2.15, loader-utils@^0.2.16, loader-utils@^
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
-lodash, lodash@^4.16.4, lodash@^4.2.0, lodash@>=1.3.0:
+lodash, lodash@^4.16.4, lodash@^4.2.0:
   version "4.16.6"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.6.tgz#d22c9ac660288f3843e16ba7d2b5d06cca27d777"
 
@@ -2713,12 +2724,6 @@ request@^2.75.0:
     stringstream "~0.0.4"
     tough-cookie "~2.3.0"
     tunnel-agent "~0.4.1"
-
-restangular@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/restangular/-/restangular-1.5.2.tgz#a7515519a7ab0c2bac8667a77ffe530562e92589"
-  dependencies:
-    lodash ">=1.3.0"
 
 right-align@^0.1.1:
   version "0.1.3"

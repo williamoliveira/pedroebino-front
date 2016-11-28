@@ -7,7 +7,6 @@
     </div>
     <div class="modal-body">
 
-
         <form name="vm.form" novalidate>
 
             <h4>Origem</h4>
@@ -59,17 +58,21 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Carga em Litros</label>
-                        <input type="text" ng-model="vm.formModel.volume" class="form-control" placeholder="Ex: 500">
+                        <input type="number" ng-model="vm.formModel.volume" class="form-control" placeholder="Ex: 500">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label>Data preferida</label>
-                        <input type="date" ng-model="vm.formModel.preferredDate" class="form-control"
-                               placeholder="__/__/____">
+                        <div>
+                            <datetimepicker ng-model="vm.formModel.preferredDate"
+                                            date-format="dd/MM/yyyy"
+                                            show-meridian="false">
+                            </datetimepicker>
+                        </div>
                     </div>
                 </div>
             </div>

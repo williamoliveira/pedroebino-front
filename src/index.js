@@ -9,10 +9,18 @@ import "angular-formly";
 import "angular-formly-templates-bootstrap";
 import "angular-sanitize";
 import "angular-growl-v2";
+import "angular-animate";
+import "angular-loading-bar";
 import "ngstorage";
+import "angular-ui-bootstrap-datetimepicker";
+
+
+// Styles;
 import "./styles/index.less";
+
+// App dependencies
 import run from "./run";
-import config from "./config";
+import config, {datetimepicker} from "./config";
 import angularLocale from "./common/angular-locales/pt-br.module";
 import resources from "./common/resources/module";
 import authModule from "./common/auth/module";
@@ -22,10 +30,6 @@ import humanizeDurationModule from "./common/humanize-duration/module";
 import message from "./common/message/module";
 import statesDashboardModule from "./states/dashboard/module";
 import statesOutsideModule from "./states/outside/module";
-
-// Styles
-
-// App dependencies
 
 // Main module declaration
 const module = angular.module('pedro&bino', [
@@ -42,6 +46,9 @@ const module = angular.module('pedro&bino', [
   'permission',
   'permission.ui',
   'angularMoment',
+  'angular-loading-bar',
+  'ngAnimate',
+  'ui.bootstrap.datetimepicker',
 
   // App
   angularLocale.name,
@@ -78,6 +85,7 @@ module.value('ENV', {
 
 module.config(config)
 module.run(run)
+module.constant('uiDatetimePickerConfig', datetimepicker)
 
 // <html> level controller
 /** @ngInject */

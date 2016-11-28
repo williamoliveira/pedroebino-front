@@ -15,8 +15,8 @@ function config(modalStateProvider) {
     controllerAs: 'vm',
     resolve: {
       /** @ngInject */
-      truck: ($stateParams, $state, TrucksResource) => {
-        return TrucksResource.fetchById($state.$stateParams.id)
+      truck: ($stateParams, $state, trucksResource) => {
+        return trucksResource.fetchById($state.$stateParams.id)
       }
     }
   })

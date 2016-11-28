@@ -5,6 +5,7 @@
 @import "@{node_modules_path}/bootswatch/@{bootswatch_theme}/variables.less";
 @import "@{node_modules_path}/bootswatch/@{bootswatch_theme}/bootswatch.less";
 @import "util";
+@import "./loading-bar";
 
 .light-grey-bg{
   background-color: #f1f1f1;
@@ -41,4 +42,36 @@
 
 .border-radius-sm {
   border-radius: 4px;
+}
+
+/* Datepicker */
+.datetimepicker-wrapper {
+  vertical-align: middle;
+  display: inline-block;
+}
+.datetimepicker-wrapper > input {
+  margin-bottom: 0 !important;
+  width: 130px;
+}
+.datetimepicker-wrapper [ng-model=hours],
+.datetimepicker-wrapper [ng-model=minutes] {
+  width: 64px !important;
+}
+[uib-datepicker] {
+  margin: 0 5px;
+}
+[uib-datepicker] .btn,
+[uib-datepicker] .btn:hover {
+  background-color: transparent;
+  color: #797979;
+  border: none;
+  box-shadow: none;
+}
+[uib-datepicker] .btn.active {
+  background-color: #3F51B5;
+  color: #fff;
+}
+[uib-datepicker] .btn:hover {
+  background-color: #32408f;
+  color: #fff;
 }
