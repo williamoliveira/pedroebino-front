@@ -53,17 +53,48 @@
                             {{proposal.leavesAt | date:'dd/MM/yyyy'}}
                         </div>
                         <div class="panel-body text-center">
-                            <h4 class="text-success m-t-none">
-                                {{proposal.value | currency:'R$ '}}
-                            </h4>
+
+                            <div ng-if="!vm.request.canShare">
+                                <h4 class="text-success m-t-none" >
+                                    {{proposal.value | currency:'R$ '}}
+                                </h4>
+                            </div>
+
+                            <div ng-if="vm.request.canShare">
+
+                                <div ng-if="!proposal.definedRequestsCount > 0">
+                                    <h5 class="m-t-none">
+                                        <s>{{proposal.value | currency:'R$ '}}</s>
+                                    </h5>
+                                    <h4 class="m-t-none" ng-init="vm.displaingAsterisc = true">
+                                        {{proposal.sharedValue | currency:'R$ '}} *
+                                    </h4>
+                                </div>
+
+                                <div ng-if="proposal.definedRequestsCount > 0">
+                                    <h5 class="m-t-none">
+                                        <s>{{proposal.value | currency:'R$ '}}</s>
+                                    </h5>
+                                    <h4 class="text-success m-t-none" >
+                                        {{proposal.sharedValue | currency:'R$ '}}
+                                    </h4>
+                                </div>
+
+                            </div>
 
                             <button ng-click="vm.selectProposal(vm.request, proposal)"
-                                    class="btn btn-primary btn-sm btn-block">
+                                    class="m-t-md btn btn-primary btn-sm btn-block">
+                                <i class="glyphicon glyphicon-ok"></i> &nbsp;
                                 Selecionar
                             </button>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-12 text-right" ng-if="vm.displaingAsterisc">
+                    <small>* se encontrar alguem para compartilhar o frete</small>
+                </div>
+
             </div>
         </div>
 
@@ -72,7 +103,7 @@
 
             Data de saída: {{vm.request.chosenProposal.leavesAt | date:"dd/MM/yyyy 'ás' HH:mm"}} <br>
             Data estimada de chegada: {{vm.request.chosenProposal.arrivesAt | date:"dd/MM/yyyy 'ás' HH:mm"}}<br>
-            Valor: {{vm.request.chosenProposal.value | currency:"R$ "}}
+            Valor: {{((vm.request.chosenProposal.definedRequestsCount > 1) ? vm.request.chosenProposal.sharedValue : vm.request.chosenProposal.value) | currency:"R$ "}}
         </div>
 
         <div class="clearfix"></div>
