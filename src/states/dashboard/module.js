@@ -3,6 +3,7 @@ import template from "./template.html";
 import requestsModule from "./requests/module";
 import trucksModule from "./trucks/module";
 import driversModule from "./drivers/module";
+import usersModule from "./users/module";
 import settingsModule from "./settings/module";
 
 export default angular
@@ -11,6 +12,7 @@ export default angular
     settingsModule.name,
     trucksModule.name,
     driversModule.name,
+    usersModule.name,
   ])
   .config(config)
 

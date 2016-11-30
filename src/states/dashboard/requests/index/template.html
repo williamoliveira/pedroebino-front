@@ -13,6 +13,11 @@
 </div>
 
 <div class="row">
+
+    <div class="text-center" ng-if="vm.requests.length < 1">
+        Nenhuma solicitação de frete no momento, você pode criar uma clicando no botão "Novo"
+    </div>
+
     <div ng-repeat="request in vm.requests"
          ui-sref="dashboard.requests.show({id: request.id})"
          class="col-md-3">

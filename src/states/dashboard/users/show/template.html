@@ -1,0 +1,22 @@
+<div skl-busy="isLoading">
+
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.dismiss()" aria-label="Close">
+            <span aria-hidden="true">&times</span>
+        </button>
+        <b class="modal-title">Usuário</b>
+    </div>
+
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-9">
+                <b>Nome:</b> {{vm.user.person.name}}<br>
+                <b>Email:</b> {{vm.user.email}}<br>
+                <b>Tipo:</b> {{vm.presentRole(vm.user.role)}}<br>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

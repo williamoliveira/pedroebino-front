@@ -1,0 +1,49 @@
+<div skl-busy="isLoading">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="vm.dismiss()" aria-label="Close">
+            <span aria-hidden="true">&times</span>
+        </button>
+        <b class="modal-title">Novo usuário</b>
+    </div>
+    <div class="modal-body">
+
+        <form name="vm.form" novalidate>
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" ng-model="vm.formModel.name" class="form-control" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" ng-model="vm.formModel.email" class="form-control" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" ng-model="vm.formModel.password" class="form-control" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label>Tipo</label>
+                <select class="form-control"
+                        ng-model="vm.formModel.role"
+                        ng-options="role as role.name for role in vm.roles track by role.id">
+                </select>
+
+            </div>
+
+        </form>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="vm.dismiss()">Cancelar</button>
+        <button type="submit"
+                ng-click="vm.submit(vm.formModel)"
+                ng-disabled="!vm.form.$valid"
+                class="btn btn-success">Cadastrar
+        </button>
+    </div>
+</div>
