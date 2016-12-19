@@ -6,6 +6,11 @@
 
 Frontend for the Pedro&Bino application, built with Javascript using the concept of [SPA](https://en.wikipedia.org/wiki/Single-page_application) with thhe [AngularJs](https://angularjs.org/) framework. Makes use of [Webpack](https://webpack.github.io/) for the build proccess.
 
+![1](http://i.imgur.com/T00LmYO.png)
+![2](http://i.imgur.com/0tONKBo.png)
+![3](http://i.imgur.com/eW5V25W.png)
+![4](http://i.imgur.com/zA5rmh7.png)
+
 ## Demo
 Demo: https://rawgit.com/williamoliveira/pedroebino-front/master/dist/index.html#/
 
