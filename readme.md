@@ -1,21 +1,21 @@
 # Pedro&Bino Frontend
 
-[Repositório do Backend](https://github.com/williamoliveira/pedroebino-back)
+[Backend Repository >](https://github.com/williamoliveira/pedroebino-back)
 
-## Descrição
+## Description
 
-Frontend da aplicação Pedro&Bino, construído em Javascript utilizando o conceito de [SPA](https://en.wikipedia.org/wiki/Single-page_application) com a framework [AngularJs](https://angularjs.org/). Faz uso do [Webpack](https://webpack.github.io/) para modularização do Javascript.
+Frontend for the Pedro&Bino application, built with Javascript using the concept of [SPA](https://en.wikipedia.org/wiki/Single-page_application) with thhe [AngularJs](https://angularjs.org/) framework. Makes use of [Webpack](https://webpack.github.io/) for the build proccess.
 
-## Demonstração
+## Demo
 Demo: https://rawgit.com/williamoliveira/pedroebino-front/master/dist/index.html#/
 
-## Desenvolvimento
+## Development
 
-### Requisitos
-- Nodejs e npm
+### Requirements
+- Nodejs and npm
 
-### Uso
-- Clone (`git clone https://github.com/williamoliveira/pedroebino-front`) ou [baixe](https://github.com/williamoliveira/pedroebino-front/archive/master.zip) o repositório do projeto.
-- Execute `npm install` para instalação das dependencias
-- Execute `npm run serve` para iniciar o servidor de desenvolvimento (outros comandos podem ser vistos [aqui](https://github.com/williamoliveira/pedroebino-front/blob/master/package.json#L4))
-- Acesse [http://localhost:8080/](http://localhost:8080/)
+### Usage
+- Clone (`git clone https://github.com/williamoliveira/pedroebino-front`) or [download](https://github.com/williamoliveira/pedroebino-front/archive/master.zip) the project repository.
+- Run `npm install` to install dependencies
+- Run `npm run serve` to start the development server (other commands can be seem [here](https://github.com/williamoliveira/pedroebino-front/blob/master/package.json#L4))
+- Access [http://localhost:8080/](http://localhost:8080/)
